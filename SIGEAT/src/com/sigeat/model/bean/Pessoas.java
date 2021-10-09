@@ -1,8 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Generalização das classes de mapeamento de Usuarios e Clientes
  */
+
 package com.sigeat.model.bean;
 
 import javax.persistence.Column;
@@ -11,9 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-/**
- *
- * @author Workstation
+/*
+ * SIGEAT/ Model / Bean / Pessoas
+ * @author Junior
+ * Version : 1.0.0
  */
 
 @MappedSuperclass

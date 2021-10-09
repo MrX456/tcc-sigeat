@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Classe de teste unitário de conexão
  */
 package com.sigeat.connection;
 
@@ -13,10 +11,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Workstation
+/*
+ * SIGEAT/ Tests / ConnectionFactory
+ * @author Junior
+ * Version : 1.0.0
  */
+
 public class ConnectionFactoryTest {
     
     public ConnectionFactoryTest() {

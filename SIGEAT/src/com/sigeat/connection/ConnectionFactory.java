@@ -1,18 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Classe responsavel pela conexão com o banco de dados
  */
+
 package com.sigeat.connection;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- *
- * @author Workstation
+/*
+ * SIGEAT/ Connection / ConnectionFactory
+ * @author Junior
+ * Version : 1.0.0
  */
+
 public class ConnectionFactory {
     
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("systemPU");

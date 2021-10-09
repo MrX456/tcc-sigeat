@@ -1,0 +1,404 @@
+Iniciando testes da entidade Usuarios
+Conectando ao banco de dados...
+testSave() rodando...
+
+Criando instancias de Usuarios...
+
+Criando atributos usuario 1...
+
+Criando atributos usuario 2...
+
+Criando atributos usuario 3...
+
+Criando atributos usuario 4...
+
+Adicionando usuarios a lista...
+
+Inserindo usuarios na base de dados...
+
+Validando dados...
+
+Hibernate: 
+    insert 
+    into
+        Usuarios
+        (nome, login, perfil, senha) 
+    values
+        (?, ?, ?, ?)
+
+Dados inseridos com sucesso.
+
+Validando dados...
+
+Hibernate: 
+    insert 
+    into
+        Usuarios
+        (nome, login, perfil, senha) 
+    values
+        (?, ?, ?, ?)
+
+Dados inseridos com sucesso.
+
+Validando dados...
+
+Hibernate: 
+    insert 
+    into
+        Usuarios
+        (nome, login, perfil, senha) 
+    values
+        (?, ?, ?, ?)
+
+Dados inseridos com sucesso.
+
+Validando dados...
+
+Hibernate: 
+    insert 
+    into
+        Usuarios
+        (nome, login, perfil, senha) 
+    values
+        (?, ?, ?, ?)
+
+Dados inseridos com sucesso.
+
+
+Passou
+
+testSave() concluido.
+
+
+testFindById() rodando...
+
+Gerando id...
+
+Procurando pelo id 2...
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_0_0_,
+        usuarios0_.nome as nome2_0_0_,
+        usuarios0_.login as login3_0_0_,
+        usuarios0_.perfil as perfil4_0_0_,
+        usuarios0_.senha as senha5_0_0_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        usuarios0_.id=?
+
+ID : 2
+
+Nome : Ana Paula
+
+Login : ap123
+
+Senha : 11111
+
+Perfil : administrador
+
+Passou
+
+testFindById() concluido.
+
+
+testFindByIdNotFound() rodando...
+
+Gerando id aleatório...
+
+Procurando pelo id 12...
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_0_0_,
+        usuarios0_.nome as nome2_0_0_,
+        usuarios0_.login as login3_0_0_,
+        usuarios0_.perfil as perfil4_0_0_,
+        usuarios0_.senha as senha5_0_0_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        usuarios0_.id=?
+
+Dados não encontrados
+
+Passou
+
+
+testFindByIdNotFound() concluido...
+
+
+testFindAll() rodando...
+
+Procurando...
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_0_,
+        usuarios0_.nome as nome2_0_,
+        usuarios0_.login as login3_0_,
+        usuarios0_.perfil as perfil4_0_,
+        usuarios0_.senha as senha5_0_ 
+    from
+        Usuarios usuarios0_
+
+Todos os dados encontrados
+
+
+ID : 1
+
+Nome : Marcos Antônio
+
+Login : marcos123
+
+Senha : 12345
+
+Perfil : usuario
+--------------------------------
+
+ID : 2
+
+Nome : Ana Paula
+
+Login : ap123
+
+Senha : 11111
+
+Perfil : administrador
+--------------------------------
+
+ID : 3
+
+Nome : Ulisses Passos
+
+Login : ulisses34
+
+Senha : 55555
+
+Perfil : usuario
+--------------------------------
+
+ID : 4
+
+Nome : Pamela Silva
+
+Login : pam123
+
+Senha : 44444
+
+Perfil : usuario
+--------------------------------
+
+Passou
+
+testFindAll() concluido.
+
+
+testUpdate() rodando...
+
+Usuario de id 4 escolhido
+Criando instancia de usuario...
+
+Inserindo atributos de usuario...
+
+Validando e atualizando dados...
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_0_0_,
+        usuarios0_.nome as nome2_0_0_,
+        usuarios0_.login as login3_0_0_,
+        usuarios0_.perfil as perfil4_0_0_,
+        usuarios0_.senha as senha5_0_0_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        usuarios0_.id=?
+Hibernate: 
+    update
+        Usuarios 
+    set
+        nome=?,
+        login=?,
+        perfil=?,
+        senha=? 
+    where
+        id=?
+Hibernate: 
+    select
+        usuarios0_.id as id1_0_0_,
+        usuarios0_.nome as nome2_0_0_,
+        usuarios0_.login as login3_0_0_,
+        usuarios0_.perfil as perfil4_0_0_,
+        usuarios0_.senha as senha5_0_0_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        usuarios0_.id=?
+
+ID : 4
+
+Nome : Pamela Silva
+
+Login : pamelasilva
+
+Senha : silva45$
+
+Perfil : administrador
+
+Passou
+
+testUpdate() concluido.
+
+
+testfindByNomeLike() rodando...
+
+Selecionando letra ...
+
+Procurando 'p'...
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_0_,
+        usuarios0_.nome as nome2_0_,
+        usuarios0_.login as login3_0_,
+        usuarios0_.perfil as perfil4_0_,
+        usuarios0_.senha as senha5_0_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        usuarios0_.nome like concat('%', ?)
+
+Todos os dados encontrados
+
+
+ID : 2
+
+Nome : Ana Paula
+
+Login : ap123
+
+Senha : 11111
+
+Perfil : administrador
+--------------------------------
+
+ID : 3
+
+Nome : Ulisses Passos
+
+Login : ulisses34
+
+Senha : 55555
+
+Perfil : usuario
+--------------------------------
+
+ID : 4
+
+Nome : Pamela Silva
+
+Login : pamelasilva
+
+Senha : silva45$
+
+Perfil : administrador
+--------------------------------
+
+Passou
+
+testfindByDescricaoLike() concluido.
+
+
+testfindByNomeLikeNotFound() rodando...
+
+Selecionando letra ...
+
+Procurando 'z'...
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_0_,
+        usuarios0_.nome as nome2_0_,
+        usuarios0_.login as login3_0_,
+        usuarios0_.perfil as perfil4_0_,
+        usuarios0_.senha as senha5_0_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        usuarios0_.nome like concat('%', ?)
+
+Dados não encontrados
+
+Passou
+
+testfindByNomeLikeNotFound() concluido.
+
+
+testRemove() rodando...
+
+Gerando numero de id...
+
+Removendo usuario com id 3...
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_0_0_,
+        usuarios0_.nome as nome2_0_0_,
+        usuarios0_.login as login3_0_0_,
+        usuarios0_.perfil as perfil4_0_0_,
+        usuarios0_.senha as senha5_0_0_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        usuarios0_.id=?
+Hibernate: 
+    delete 
+    from
+        Usuarios 
+    where
+        id=?
+Procurando...
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_0_0_,
+        usuarios0_.nome as nome2_0_0_,
+        usuarios0_.login as login3_0_0_,
+        usuarios0_.perfil as perfil4_0_0_,
+        usuarios0_.senha as senha5_0_0_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        usuarios0_.id=?
+Nada encontrado
+
+Passou
+
+testRemove() concluido.
+
+Encerrando conexão ao banco de dados...
+Encerrando testes da entidade Usuarios
+out 08, 2021 10:28:48 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+INFO: HHH000204: Processing PersistenceUnitInfo [name: systemPU]
+out 08, 2021 10:28:48 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {5.4.11.Final}
+out 08, 2021 10:28:48 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost/Sigeat]
+out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {user=root, password=****}
+out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+out 08, 2021 10:28:49 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+out 08, 2021 10:28:50 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2f40a43] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+out 08, 2021 10:28:50 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]

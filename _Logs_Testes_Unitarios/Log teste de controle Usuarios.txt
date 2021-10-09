@@ -1,0 +1,35 @@
+Iniciando testes de controle de Usuarios
+
+Proximo teste
+
+Teste validate
+Criando instância de Usuarios
+Passou
+Encerrando teste
+
+Proximo teste
+
+Teste ValidateFailNome()
+Criando instância de Usuarios
+Nome em branco...
+Passou
+Encerrando teste
+
+Proximo teste
+
+Teste ValidateFailSenha()
+Criando instância de Usuarios
+Senha de tamanho 16...
+Passou
+Encerrando teste
+
+Proximo teste
+
+Teste ValidateFailLogin()
+Criando instância de Usuarios
+Login de tamanho 16...
+Passou
+Encerrando teste
+
+
+Encerrando testes de controle de Usuarios
