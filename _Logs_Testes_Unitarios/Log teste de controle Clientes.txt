@@ -1,0 +1,35 @@
+Iniciando testes de controle de Clientes
+
+Proximo teste
+
+Teste validate
+Criando instância de Clientes
+Passou
+Encerrando teste
+
+Proximo teste
+
+Teste testValidateFailTelefone()
+Criando instância de Clientes
+Telefone em branco...
+Passou
+Encerrando teste
+
+Proximo teste
+
+Teste ValidateFailEndereco()
+Criando instância de Clientes
+Endereco em branco...
+Passou
+Encerrando teste
+
+Proximo teste
+
+Teste ValidateFailNome()
+Criando instância de Clientes
+Nome em branco...
+Passou
+Encerrando teste
+
+
+Encerrando testes de controle de Clientes

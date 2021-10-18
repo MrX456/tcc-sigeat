@@ -7,7 +7,7 @@ package com.sigeat.controller;
 import com.sigeat.model.bean.Usuarios;
 
 /*
- * SIGEAT/ Controller / IUsuario
+ * SIGEAT/ Controller / IUsuarios
  * @author Junior
  * Version : 1.0.0
  */

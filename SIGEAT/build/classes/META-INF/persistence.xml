@@ -6,6 +6,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!-- Lista de entidades -->
     <class>com.sigeat.model.bean.com.sigeat.model.bean.Usuarios</class>
+    <class>com.sigeat.model.bean.com.sigeat.model.bean.Clientes</class>
     <properties>
       <!-- Propriedades JDBC -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
