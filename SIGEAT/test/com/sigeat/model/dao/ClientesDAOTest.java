@@ -319,9 +319,9 @@ public class ClientesDAOTest {
         System.out.println("\ntestRemove() rodando...\n");
 
         System.out.println("Gerando numero de id...\n");
-        Integer id = 3;
+        Integer id = 4;
 
-        System.out.println("Removendo cliente com id 3...\n");
+        System.out.println("Removendo cliente com id 4...\n");
 
         ClientesDAO dao = new ClientesDAO();
         dao.remove(id);

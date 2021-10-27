@@ -1,5 +1,6 @@
 Iniciando testes da entidade Usuarios
 Conectando ao banco de dados...
+
 testSave() rodando...
 
 Criando instancias de Usuarios...
@@ -74,29 +75,29 @@ testFindById() rodando...
 
 Gerando id...
 
-Procurando pelo id 2...
+Procurando pelo id 4...
 
 Hibernate: 
     select
-        usuarios0_.id as id1_0_0_,
-        usuarios0_.nome as nome2_0_0_,
-        usuarios0_.login as login3_0_0_,
-        usuarios0_.perfil as perfil4_0_0_,
-        usuarios0_.senha as senha5_0_0_ 
+        usuarios0_.id as id1_2_0_,
+        usuarios0_.nome as nome2_2_0_,
+        usuarios0_.login as login3_2_0_,
+        usuarios0_.perfil as perfil4_2_0_,
+        usuarios0_.senha as senha5_2_0_ 
     from
         Usuarios usuarios0_ 
     where
         usuarios0_.id=?
 
-ID : 2
+ID : 4
 
-Nome : Ana Paula
+Nome : Pamela Silva
 
-Login : ap123
+Login : pam123
 
-Senha : 11111
+Senha : 44444
 
-Perfil : administrador
+Perfil : usuario
 
 Passou
 
@@ -111,11 +112,11 @@ Procurando pelo id 12...
 
 Hibernate: 
     select
-        usuarios0_.id as id1_0_0_,
-        usuarios0_.nome as nome2_0_0_,
-        usuarios0_.login as login3_0_0_,
-        usuarios0_.perfil as perfil4_0_0_,
-        usuarios0_.senha as senha5_0_0_ 
+        usuarios0_.id as id1_2_0_,
+        usuarios0_.nome as nome2_2_0_,
+        usuarios0_.login as login3_2_0_,
+        usuarios0_.perfil as perfil4_2_0_,
+        usuarios0_.senha as senha5_2_0_ 
     from
         Usuarios usuarios0_ 
     where
@@ -135,11 +136,11 @@ Procurando...
 
 Hibernate: 
     select
-        usuarios0_.id as id1_0_,
-        usuarios0_.nome as nome2_0_,
-        usuarios0_.login as login3_0_,
-        usuarios0_.perfil as perfil4_0_,
-        usuarios0_.senha as senha5_0_ 
+        usuarios0_.id as id1_2_,
+        usuarios0_.nome as nome2_2_,
+        usuarios0_.login as login3_2_,
+        usuarios0_.perfil as perfil4_2_,
+        usuarios0_.senha as senha5_2_ 
     from
         Usuarios usuarios0_
 
@@ -206,11 +207,11 @@ Validando e atualizando dados...
 
 Hibernate: 
     select
-        usuarios0_.id as id1_0_0_,
-        usuarios0_.nome as nome2_0_0_,
-        usuarios0_.login as login3_0_0_,
-        usuarios0_.perfil as perfil4_0_0_,
-        usuarios0_.senha as senha5_0_0_ 
+        usuarios0_.id as id1_2_0_,
+        usuarios0_.nome as nome2_2_0_,
+        usuarios0_.login as login3_2_0_,
+        usuarios0_.perfil as perfil4_2_0_,
+        usuarios0_.senha as senha5_2_0_ 
     from
         Usuarios usuarios0_ 
     where
@@ -227,11 +228,11 @@ Hibernate:
         id=?
 Hibernate: 
     select
-        usuarios0_.id as id1_0_0_,
-        usuarios0_.nome as nome2_0_0_,
-        usuarios0_.login as login3_0_0_,
-        usuarios0_.perfil as perfil4_0_0_,
-        usuarios0_.senha as senha5_0_0_ 
+        usuarios0_.id as id1_2_0_,
+        usuarios0_.nome as nome2_2_0_,
+        usuarios0_.login as login3_2_0_,
+        usuarios0_.perfil as perfil4_2_0_,
+        usuarios0_.senha as senha5_2_0_ 
     from
         Usuarios usuarios0_ 
     where
@@ -260,11 +261,11 @@ Procurando 'p'...
 
 Hibernate: 
     select
-        usuarios0_.id as id1_0_,
-        usuarios0_.nome as nome2_0_,
-        usuarios0_.login as login3_0_,
-        usuarios0_.perfil as perfil4_0_,
-        usuarios0_.senha as senha5_0_ 
+        usuarios0_.id as id1_2_,
+        usuarios0_.nome as nome2_2_,
+        usuarios0_.login as login3_2_,
+        usuarios0_.perfil as perfil4_2_,
+        usuarios0_.senha as senha5_2_ 
     from
         Usuarios usuarios0_ 
     where
@@ -319,11 +320,11 @@ Procurando 'z'...
 
 Hibernate: 
     select
-        usuarios0_.id as id1_0_,
-        usuarios0_.nome as nome2_0_,
-        usuarios0_.login as login3_0_,
-        usuarios0_.perfil as perfil4_0_,
-        usuarios0_.senha as senha5_0_ 
+        usuarios0_.id as id1_2_,
+        usuarios0_.nome as nome2_2_,
+        usuarios0_.login as login3_2_,
+        usuarios0_.perfil as perfil4_2_,
+        usuarios0_.senha as senha5_2_ 
     from
         Usuarios usuarios0_ 
     where
@@ -344,11 +345,11 @@ Removendo usuario com id 3...
 
 Hibernate: 
     select
-        usuarios0_.id as id1_0_0_,
-        usuarios0_.nome as nome2_0_0_,
-        usuarios0_.login as login3_0_0_,
-        usuarios0_.perfil as perfil4_0_0_,
-        usuarios0_.senha as senha5_0_0_ 
+        usuarios0_.id as id1_2_0_,
+        usuarios0_.nome as nome2_2_0_,
+        usuarios0_.login as login3_2_0_,
+        usuarios0_.perfil as perfil4_2_0_,
+        usuarios0_.senha as senha5_2_0_ 
     from
         Usuarios usuarios0_ 
     where
@@ -363,11 +364,11 @@ Procurando...
 
 Hibernate: 
     select
-        usuarios0_.id as id1_0_0_,
-        usuarios0_.nome as nome2_0_0_,
-        usuarios0_.login as login3_0_0_,
-        usuarios0_.perfil as perfil4_0_0_,
-        usuarios0_.senha as senha5_0_0_ 
+        usuarios0_.id as id1_2_0_,
+        usuarios0_.nome as nome2_2_0_,
+        usuarios0_.login as login3_2_0_,
+        usuarios0_.perfil as perfil4_2_0_,
+        usuarios0_.senha as senha5_2_0_ 
     from
         Usuarios usuarios0_ 
     where
@@ -380,25 +381,25 @@ testRemove() concluido.
 
 Encerrando conexão ao banco de dados...
 Encerrando testes da entidade Usuarios
-out 08, 2021 10:28:48 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+out 27, 2021 2:14:57 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
 INFO: HHH000204: Processing PersistenceUnitInfo [name: systemPU]
-out 08, 2021 10:28:48 PM org.hibernate.Version logVersion
+out 27, 2021 2:14:58 PM org.hibernate.Version logVersion
 INFO: HHH000412: Hibernate Core {5.4.11.Final}
-out 08, 2021 10:28:48 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+out 27, 2021 2:14:58 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
 INFO: HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
 WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost/Sigeat]
-out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH10001001: Connection properties: {user=root, password=****}
-out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH10001003: Autocommit mode: false
-out 08, 2021 10:28:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
 INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
-out 08, 2021 10:28:49 PM org.hibernate.dialect.Dialect <init>
+out 27, 2021 2:14:59 PM org.hibernate.dialect.Dialect <init>
 INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-out 08, 2021 10:28:50 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
-INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2f40a43] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-out 08, 2021 10:28:50 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+out 27, 2021 2:15:02 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5c84624f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+out 27, 2021 2:15:03 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
 INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]

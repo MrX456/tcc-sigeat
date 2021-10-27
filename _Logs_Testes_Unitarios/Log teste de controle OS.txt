@@ -1,0 +1,28 @@
+Iniciando testes de controle de OS
+
+Proximo teste
+
+Teste validate
+Criando instância de OS
+Criando instância de Cliente
+Passou
+Encerrando teste
+
+Proximo teste
+
+Teste testValidateNullEquipamento()
+Criando instância de OS(Campo equipamento nulo)
+Criando instância de Cliente
+Passou
+Encerrando teste
+
+Proximo teste
+
+Teste testValidateNullDefeito()
+Criando instância de OS(Campo equipamento nulo)
+Criando instância de Cliente
+Passou
+Encerrando teste
+
+
+Encerrando testes de controle de OS

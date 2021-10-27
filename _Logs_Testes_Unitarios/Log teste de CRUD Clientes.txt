@@ -74,7 +74,7 @@ testFindById() rodando...
 
 Gerando id...
 
-Procurando pelo id 3...
+Procurando pelo id 2...
 
 Hibernate: 
     select
@@ -88,15 +88,15 @@ Hibernate:
     where
         clientes0_.id=?
 
-ID : 3
+ID : 2
 
-Nome : Ulisses Passos
+Nome : Ana Paula de Oliveira
 
-Endereco : Rua Adelina Carvalho 13107
+Endereco : Rua Philadelpho de Paula Pinto 10135
 
-Telefone : 3210-4455
+Telefone : 3544-5555
 
-Email : 
+Email : anapaula555@email.com
 
 Passou
 
@@ -340,7 +340,7 @@ testRemove() rodando...
 
 Gerando numero de id...
 
-Removendo cliente com id 3...
+Removendo cliente com id 4...
 
 Hibernate: 
     select
@@ -380,26 +380,25 @@ testRemove() concluido.
 
 Encerrando conexão ao banco de dados...
 Encerrando testes da entidade Clientes
-
-out 18, 2021 1:23:23 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+out 27, 2021 2:16:47 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
 INFO: HHH000204: Processing PersistenceUnitInfo [name: systemPU]
-out 18, 2021 1:23:23 PM org.hibernate.Version logVersion
+out 27, 2021 2:16:47 PM org.hibernate.Version logVersion
 INFO: HHH000412: Hibernate Core {5.4.11.Final}
-out 18, 2021 1:23:23 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+out 27, 2021 2:16:48 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
 INFO: HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-out 18, 2021 1:23:24 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+out 27, 2021 2:16:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
 WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-out 18, 2021 1:23:24 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+out 27, 2021 2:16:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost/Sigeat]
-out 18, 2021 1:23:24 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+out 27, 2021 2:16:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH10001001: Connection properties: {user=root, password=****}
-out 18, 2021 1:23:24 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+out 27, 2021 2:16:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH10001003: Autocommit mode: false
-out 18, 2021 1:23:24 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+out 27, 2021 2:16:48 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
 INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
-out 18, 2021 1:23:24 PM org.hibernate.dialect.Dialect <init>
+out 27, 2021 2:16:48 PM org.hibernate.dialect.Dialect <init>
 INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-out 18, 2021 1:23:26 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
-INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5a2f016d] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-out 18, 2021 1:23:26 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+out 27, 2021 2:16:50 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5c84624f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+out 27, 2021 2:16:50 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
 INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]

@@ -1,0 +1,556 @@
+Iniciando testes da entidade OS
+Conectando ao banco de dados...
+Hibernate: 
+    
+    create table OS (
+       nmr_os integer not null auto_increment,
+        defeito varchar(100) not null,
+        dt_os TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        equipamento varchar(50) not null,
+        observacao varchar(100),
+        servico varchar(100),
+        situacao varchar(25),
+        tecnico varchar(50),
+        tipo varchar(15),
+        valor decimal(10,2),
+        cliente_id integer,
+        primary key (nmr_os)
+    ) engine=InnoDB
+Hibernate: 
+    
+    alter table OS 
+       add constraint FKf98iyh7ck9nydxq7gfg43lnhl 
+       foreign key (cliente_id) 
+       references Clientes (id)
+testSave() rodando...
+
+Criando instancias de OS...
+
+Criando atributos OS 1...
+
+Criando atributos OS 2...
+
+Criando atributos OS 3...
+
+Adicionando OSs a lista...
+
+Inserindo OSs na base de dados...
+
+Validando dados...
+
+Hibernate: 
+    insert 
+    into
+        OS
+        (cliente_id, defeito, equipamento, observacao, servico, situacao, tecnico, tipo, valor) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+
+Dados inseridos com sucesso.
+
+Validando dados...
+
+Hibernate: 
+    insert 
+    into
+        OS
+        (cliente_id, defeito, equipamento, observacao, servico, situacao, tecnico, tipo, valor) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+
+Dados inseridos com sucesso.
+
+Validando dados...
+
+Hibernate: 
+    insert 
+    into
+        OS
+        (cliente_id, defeito, equipamento, observacao, servico, situacao, tecnico, tipo, valor) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+
+Dados inseridos com sucesso.
+
+
+Passou
+
+testSave() concluido.
+
+
+testFindByNmrOS() rodando...
+
+Gerando id...
+
+Procurando pelo numero 2...
+
+Hibernate: 
+    select
+        os0_.nmr_os as nmr_os1_1_0_,
+        os0_.cliente_id as cliente11_1_0_,
+        os0_.defeito as defeito2_1_0_,
+        os0_.dt_os as dt_os3_1_0_,
+        os0_.equipamento as equipame4_1_0_,
+        os0_.observacao as observac5_1_0_,
+        os0_.servico as servico6_1_0_,
+        os0_.situacao as situacao7_1_0_,
+        os0_.tecnico as tecnico8_1_0_,
+        os0_.tipo as tipo9_1_0_,
+        os0_.valor as valor10_1_0_,
+        clientes1_.id as id1_0_1_,
+        clientes1_.nome as nome2_0_1_,
+        clientes1_.email as email3_0_1_,
+        clientes1_.endereco as endereco4_0_1_,
+        clientes1_.telefone as telefone5_0_1_ 
+    from
+        OS os0_ 
+    left outer join
+        Clientes clientes1_ 
+            on os0_.cliente_id=clientes1_.id 
+    where
+        os0_.nmr_os=?
+
+Nmr OS : 2
+
+Equipamento : Desktop Positivo
+
+Defeito : Não liga
+
+Data OS : 2021-10-27 14:22:22.0
+
+Cliente : Ana Paula de Oliveira
+
+Telefone : 3544-5555
+
+Passou
+
+testFindByNmrOS() concluido.
+
+
+testFindByNmrOSNotFound() rodando...
+
+Gerando id aleatório...
+
+Procurando pela os 12...
+
+Hibernate: 
+    select
+        os0_.nmr_os as nmr_os1_1_0_,
+        os0_.cliente_id as cliente11_1_0_,
+        os0_.defeito as defeito2_1_0_,
+        os0_.dt_os as dt_os3_1_0_,
+        os0_.equipamento as equipame4_1_0_,
+        os0_.observacao as observac5_1_0_,
+        os0_.servico as servico6_1_0_,
+        os0_.situacao as situacao7_1_0_,
+        os0_.tecnico as tecnico8_1_0_,
+        os0_.tipo as tipo9_1_0_,
+        os0_.valor as valor10_1_0_,
+        clientes1_.id as id1_0_1_,
+        clientes1_.nome as nome2_0_1_,
+        clientes1_.email as email3_0_1_,
+        clientes1_.endereco as endereco4_0_1_,
+        clientes1_.telefone as telefone5_0_1_ 
+    from
+        OS os0_ 
+    left outer join
+        Clientes clientes1_ 
+            on os0_.cliente_id=clientes1_.id 
+    where
+        os0_.nmr_os=?
+
+Dados não encontrados
+
+Passou
+
+
+testFindByNmrOSNotFound() concluido...
+
+
+testFindAll() rodando...
+
+Procurando...
+
+Hibernate: 
+    select
+        os0_.nmr_os as nmr_os1_1_,
+        os0_.cliente_id as cliente11_1_,
+        os0_.defeito as defeito2_1_,
+        os0_.dt_os as dt_os3_1_,
+        os0_.equipamento as equipame4_1_,
+        os0_.observacao as observac5_1_,
+        os0_.servico as servico6_1_,
+        os0_.situacao as situacao7_1_,
+        os0_.tecnico as tecnico8_1_,
+        os0_.tipo as tipo9_1_,
+        os0_.valor as valor10_1_ 
+    from
+        OS os0_
+Hibernate: 
+    select
+        clientes0_.id as id1_0_0_,
+        clientes0_.nome as nome2_0_0_,
+        clientes0_.email as email3_0_0_,
+        clientes0_.endereco as endereco4_0_0_,
+        clientes0_.telefone as telefone5_0_0_ 
+    from
+        Clientes clientes0_ 
+    where
+        clientes0_.id=?
+Hibernate: 
+    select
+        clientes0_.id as id1_0_0_,
+        clientes0_.nome as nome2_0_0_,
+        clientes0_.email as email3_0_0_,
+        clientes0_.endereco as endereco4_0_0_,
+        clientes0_.telefone as telefone5_0_0_ 
+    from
+        Clientes clientes0_ 
+    where
+        clientes0_.id=?
+Hibernate: 
+    select
+        clientes0_.id as id1_0_0_,
+        clientes0_.nome as nome2_0_0_,
+        clientes0_.email as email3_0_0_,
+        clientes0_.endereco as endereco4_0_0_,
+        clientes0_.telefone as telefone5_0_0_ 
+    from
+        Clientes clientes0_ 
+    where
+        clientes0_.id=?
+
+Todos os dados encontrados
+
+
+Nmr OS : 1
+
+Equipamento : Notebook Acer
+
+Defeito : Teclado não funciona
+
+Data OS : 2021-10-27 14:22:22.0
+
+Cliente : Marcos Antônio
+
+Telefone : 3333-4444
+--------------------------------
+
+Nmr OS : 2
+
+Equipamento : Desktop Positivo
+
+Defeito : Não liga
+
+Data OS : 2021-10-27 14:22:22.0
+
+Cliente : Ana Paula de Oliveira
+
+Telefone : 3544-5555
+--------------------------------
+
+Nmr OS : 3
+
+Equipamento : Impressora HP
+
+Defeito : Não puxa papel
+
+Data OS : 2021-10-27 14:22:22.0
+
+Cliente : Ulisses Passos
+
+Telefone : 3210-4455
+--------------------------------
+
+Passou
+
+testFindAll() concluido.
+
+
+testUpdate() rodando...
+
+Atualizar OS numero 1
+Criando instancia de cliente...
+
+Inserindo atributos de os...
+
+Validando e atualizando dados...
+
+Hibernate: 
+    select
+        os0_.nmr_os as nmr_os1_1_0_,
+        os0_.cliente_id as cliente11_1_0_,
+        os0_.defeito as defeito2_1_0_,
+        os0_.dt_os as dt_os3_1_0_,
+        os0_.equipamento as equipame4_1_0_,
+        os0_.observacao as observac5_1_0_,
+        os0_.servico as servico6_1_0_,
+        os0_.situacao as situacao7_1_0_,
+        os0_.tecnico as tecnico8_1_0_,
+        os0_.tipo as tipo9_1_0_,
+        os0_.valor as valor10_1_0_ 
+    from
+        OS os0_ 
+    where
+        os0_.nmr_os=?
+Hibernate: 
+    select
+        clientes0_.id as id1_0_0_,
+        clientes0_.nome as nome2_0_0_,
+        clientes0_.email as email3_0_0_,
+        clientes0_.endereco as endereco4_0_0_,
+        clientes0_.telefone as telefone5_0_0_ 
+    from
+        Clientes clientes0_ 
+    where
+        clientes0_.id=?
+Hibernate: 
+    update
+        OS 
+    set
+        cliente_id=?,
+        defeito=?,
+        equipamento=?,
+        observacao=?,
+        servico=?,
+        situacao=?,
+        tecnico=?,
+        tipo=?,
+        valor=? 
+    where
+        nmr_os=?
+Hibernate: 
+    select
+        os0_.nmr_os as nmr_os1_1_0_,
+        os0_.cliente_id as cliente11_1_0_,
+        os0_.defeito as defeito2_1_0_,
+        os0_.dt_os as dt_os3_1_0_,
+        os0_.equipamento as equipame4_1_0_,
+        os0_.observacao as observac5_1_0_,
+        os0_.servico as servico6_1_0_,
+        os0_.situacao as situacao7_1_0_,
+        os0_.tecnico as tecnico8_1_0_,
+        os0_.tipo as tipo9_1_0_,
+        os0_.valor as valor10_1_0_,
+        clientes1_.id as id1_0_1_,
+        clientes1_.nome as nome2_0_1_,
+        clientes1_.email as email3_0_1_,
+        clientes1_.endereco as endereco4_0_1_,
+        clientes1_.telefone as telefone5_0_1_ 
+    from
+        OS os0_ 
+    left outer join
+        Clientes clientes1_ 
+            on os0_.cliente_id=clientes1_.id 
+    where
+        os0_.nmr_os=?
+
+Nmr OS : 1
+
+Equipamento : Notebook Acer
+
+Defeito : Teclado não funciona
+
+Data OS : 2021-10-27 14:22:22.0
+
+Tipo OS : OS
+
+Situacao : Aguardando retirada
+
+Serviço : Troca do teclado
+
+Técnico : José de Assis
+
+Valor : 190.00
+
+Cliente : Marcos Antônio
+
+Telefone : 3333-4444
+
+Passou
+
+testUpdate() concluido.
+
+
+tesfindByEquipamentoLike() rodando...
+
+Selecionando equipamento ...
+
+Procurando 'acer'...
+
+Hibernate: 
+    select
+        os0_.nmr_os as nmr_os1_1_,
+        os0_.cliente_id as cliente11_1_,
+        os0_.defeito as defeito2_1_,
+        os0_.dt_os as dt_os3_1_,
+        os0_.equipamento as equipame4_1_,
+        os0_.observacao as observac5_1_,
+        os0_.servico as servico6_1_,
+        os0_.situacao as situacao7_1_,
+        os0_.tecnico as tecnico8_1_,
+        os0_.tipo as tipo9_1_,
+        os0_.valor as valor10_1_ 
+    from
+        OS os0_ 
+    where
+        os0_.equipamento like concat('%', ?)
+Hibernate: 
+    select
+        clientes0_.id as id1_0_0_,
+        clientes0_.nome as nome2_0_0_,
+        clientes0_.email as email3_0_0_,
+        clientes0_.endereco as endereco4_0_0_,
+        clientes0_.telefone as telefone5_0_0_ 
+    from
+        Clientes clientes0_ 
+    where
+        clientes0_.id=?
+
+Todos os dados encontrados
+
+
+Nmr OS : 1
+
+Equipamento : Notebook Acer
+
+Defeito : Teclado não funciona
+
+Data OS : 2021-10-27 14:22:22.0
+
+Cliente : Marcos Antônio
+
+Telefone : 3333-4444
+--------------------------------
+
+Passou
+
+tesfindByEquipamentoLike() concluido.
+
+
+tesfindByEquipamentoLikeNotFound() rodando...
+
+Selecionando equipamento...
+
+Procurando 'asus'...
+
+Hibernate: 
+    select
+        os0_.nmr_os as nmr_os1_1_,
+        os0_.cliente_id as cliente11_1_,
+        os0_.defeito as defeito2_1_,
+        os0_.dt_os as dt_os3_1_,
+        os0_.equipamento as equipame4_1_,
+        os0_.observacao as observac5_1_,
+        os0_.servico as servico6_1_,
+        os0_.situacao as situacao7_1_,
+        os0_.tecnico as tecnico8_1_,
+        os0_.tipo as tipo9_1_,
+        os0_.valor as valor10_1_ 
+    from
+        OS os0_ 
+    where
+        os0_.equipamento like concat('%', ?)
+
+Dados não encontrados
+
+Passou
+
+tesfindByEquipamentoLikeNotFound() concluido.
+
+
+testRemove() rodando...
+
+Gerando numero de id...
+
+Removendo os numero 3...
+
+Hibernate: 
+    select
+        os0_.nmr_os as nmr_os1_1_0_,
+        os0_.cliente_id as cliente11_1_0_,
+        os0_.defeito as defeito2_1_0_,
+        os0_.dt_os as dt_os3_1_0_,
+        os0_.equipamento as equipame4_1_0_,
+        os0_.observacao as observac5_1_0_,
+        os0_.servico as servico6_1_0_,
+        os0_.situacao as situacao7_1_0_,
+        os0_.tecnico as tecnico8_1_0_,
+        os0_.tipo as tipo9_1_0_,
+        os0_.valor as valor10_1_0_,
+        clientes1_.id as id1_0_1_,
+        clientes1_.nome as nome2_0_1_,
+        clientes1_.email as email3_0_1_,
+        clientes1_.endereco as endereco4_0_1_,
+        clientes1_.telefone as telefone5_0_1_ 
+    from
+        OS os0_ 
+    left outer join
+        Clientes clientes1_ 
+            on os0_.cliente_id=clientes1_.id 
+    where
+        os0_.nmr_os=?
+Hibernate: 
+    delete 
+    from
+        OS 
+    where
+        nmr_os=?
+Procurando...
+
+Hibernate: 
+    select
+        os0_.nmr_os as nmr_os1_1_0_,
+        os0_.cliente_id as cliente11_1_0_,
+        os0_.defeito as defeito2_1_0_,
+        os0_.dt_os as dt_os3_1_0_,
+        os0_.equipamento as equipame4_1_0_,
+        os0_.observacao as observac5_1_0_,
+        os0_.servico as servico6_1_0_,
+        os0_.situacao as situacao7_1_0_,
+        os0_.tecnico as tecnico8_1_0_,
+        os0_.tipo as tipo9_1_0_,
+        os0_.valor as valor10_1_0_,
+        clientes1_.id as id1_0_1_,
+        clientes1_.nome as nome2_0_1_,
+        clientes1_.email as email3_0_1_,
+        clientes1_.endereco as endereco4_0_1_,
+        clientes1_.telefone as telefone5_0_1_ 
+    from
+        OS os0_ 
+    left outer join
+        Clientes clientes1_ 
+            on os0_.cliente_id=clientes1_.id 
+    where
+        os0_.nmr_os=?
+Nada encontrado
+
+Passou
+
+testRemove() concluido.
+
+Encerrando conexão ao banco de dados...
+Encerrando testes da entidade OS
+
+out 27, 2021 2:22:19 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+INFO: HHH000204: Processing PersistenceUnitInfo [name: systemPU]
+out 27, 2021 2:22:19 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {5.4.11.Final}
+out 27, 2021 2:22:19 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+out 27, 2021 2:22:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+out 27, 2021 2:22:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost/Sigeat]
+out 27, 2021 2:22:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {user=root, password=****}
+out 27, 2021 2:22:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+out 27, 2021 2:22:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+out 27, 2021 2:22:20 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+out 27, 2021 2:22:21 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5c84624f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+out 27, 2021 2:22:22 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]

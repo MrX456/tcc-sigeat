@@ -1,36 +1,36 @@
 /*
- * Classe responsavel pelo acesso e CRUD de Clientes
+ * Classe responsavel pelo acesso e CRUD de OS
  */
 package com.sigeat.model.dao;
 
 import com.sigeat.connection.ConnectionFactory;
-import com.sigeat.model.bean.Clientes;
+import com.sigeat.model.bean.OS;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /*
- * SIGEAT/ Model / DAO / Clientes
+ * SIGEAT/ Model / DAO / OS
  * @author Junior
  * Version : 1.0.0
  */
-public class ClientesDAO implements IClientesDAO {
+public class OSDAO implements IOSDAO {
 
     @Override
-    public Clientes save(Clientes cliente) {
+    public OS save(OS os) {
         EntityManager em = new ConnectionFactory().getConnection();
 
         try {
             em.getTransaction().begin();
 
-            //Se o cliente ja possui um id
-            if (cliente.getId() != null) {
+            //Se o os ja possui um id
+            if (os.getNmr_os()!= null) {
 
-                em.merge(cliente);
+                em.merge(os);
 
             } else {
 
-                em.persist(cliente);
+                em.persist(os);
 
             }
 
@@ -44,18 +44,18 @@ public class ClientesDAO implements IClientesDAO {
             em.close();
         }
 
-        return cliente;
+        return os;
     }
 
     @Override
-    public Clientes findById(Integer id) {
+    public OS findById(Integer nmrOS) {
         EntityManager em = new ConnectionFactory().getConnection();
 
-        Clientes cliente = null;
+        OS os = null;
 
         try {
 
-            cliente = em.find(Clientes.class, id);
+            os = em.find(OS.class, nmrOS);
 
         } catch (Exception e) {
 
@@ -67,18 +67,18 @@ public class ClientesDAO implements IClientesDAO {
 
         }
 
-        return cliente;
+        return os;
     }
 
     @Override
-    public List<Clientes> findAll() {
-        EntityManager em = new ConnectionFactory().getConnection();
+    public List<OS> findAll() {
+         EntityManager em = new ConnectionFactory().getConnection();
 
-        List<Clientes> clientes = null;
+        List<OS> os = null;
 
         try {
 
-            clientes = em.createQuery("from Clientes cli").getResultList();
+            os = em.createQuery("from OS os").getResultList();
 
         } catch (Exception e) {
 
@@ -90,22 +90,22 @@ public class ClientesDAO implements IClientesDAO {
 
         }
 
-        return clientes;
+        return os;
     }
 
     @Override
-    public Clientes remove(Integer id) {
+    public OS remove(Integer nmrOS) {
         EntityManager em = new ConnectionFactory().getConnection();
 
-        Clientes cliente = null;
+        OS os = null;
 
         try {
 
-            //Buscar usuario para deletar
-            cliente = em.find(Clientes.class, id);
+            //Buscar os para deletar
+            os = em.find(OS.class, nmrOS);
 
             em.getTransaction().begin();
-            em.remove(cliente);
+            em.remove(os);
             em.getTransaction().commit();
 
         } catch (Exception e) {
@@ -119,22 +119,22 @@ public class ClientesDAO implements IClientesDAO {
 
         }
 
-        return cliente;
+        return os;
     }
 
     @Override
-    public List<Clientes> findByNomeLike(String nome) {
-        //Entity manager e conexão
+    public List<OS> findByEquipamentoLike(String equipamento) {
+         //Entity manager e conexão
         EntityManager em = new ConnectionFactory().getConnection();
 
-        List<Clientes> clientes = null;
+        List<OS> os = null;
 
         try {
 
             //Query com clausula like. Wildcard %param%
-            Query q = em.createQuery("from Clientes cli where cli.nome like '%' || :nomeCli");
-            q.setParameter("nomeCli", nome + "%");
-            clientes = q.getResultList();
+            Query q = em.createQuery("from OS os where os.equipamento like '%' || :equipCli");
+            q.setParameter("equipCli", equipamento + "%");
+            os = q.getResultList();
 
         } catch (Exception e) {
 
@@ -146,7 +146,7 @@ public class ClientesDAO implements IClientesDAO {
 
         }
 
-        return clientes;
+        return os;
     }
-
+    
 }

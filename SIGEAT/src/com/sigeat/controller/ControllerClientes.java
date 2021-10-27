@@ -12,7 +12,7 @@ import com.sigeat.model.bean.Clientes;
  * Version : 1.0.0
  */
 
-public class ControllerClientes implements IControllerClientes {
+public class ControllerClientes extends Controller implements IControllerClientes {
 
     @Override
     public boolean validate(Clientes cliente) {
