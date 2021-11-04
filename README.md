@@ -1,4 +1,4 @@
-# tcc_univesp
+# SIGEAT
 TCC Curso Engenharia da Computação Univesp
 
 Grupo 33<br>
