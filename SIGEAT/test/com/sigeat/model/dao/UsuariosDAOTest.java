@@ -9,6 +9,7 @@ import com.sigeat.model.bean.Usuarios;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,7 +22,6 @@ import static org.junit.Assert.*;
  * @author Junior
  * Version : 1.0.0
  */
-
 public class UsuariosDAOTest {
 
     private static EntityManager em;
@@ -64,6 +64,8 @@ public class UsuariosDAOTest {
         stage6_testfindByNomeLike();
         stage7_testfindByNomeLikeNotFound();
         stage8_testRemove();
+        stage9_testLoginSucessfully();
+        stage10_testLoginWrongPassword();
     }
 
     public void stage1_testSave() {
@@ -342,6 +344,75 @@ public class UsuariosDAOTest {
         System.out.println("\nPassou\n");
 
         System.out.println("testRemove() concluido.\n");
+
+    }
+
+    public void stage9_testLoginSucessfully() {
+
+        System.out.println("\ntestLoginSucessfully() rodando...\n");
+
+        System.out.println("Selecionando usuário");
+
+        String login = "pamelasilva";
+        String senha = "silva45$";
+
+        UsuariosDAO dao = new UsuariosDAO();
+
+        System.out.println("Procurando usuario pamelasilva \n");
+       
+        Usuarios u = null;
+
+        try {
+            System.out.println("Procurando usuario pamelasilva(senha incorreta) \n");
+            u = dao.login(login, senha);
+        } catch (NoResultException e) {
+            System.out.println("\nAcesso negado! Usuário não encontrado.");//Teste falhou
+        }
+
+        // Verificando acertos
+        assertNotNull(u);
+
+        System.out.println("\nUsuário encontrado");
+
+        System.out.println("\nID : " + u.getId());
+        System.out.println("\nNome : " + u.getNome());
+        System.out.println("\nLogin : " + u.getLogin());
+        System.out.println("\nSenha : " + u.getSenha());
+        System.out.println("\nPerfil : " + u.getPerfil());
+        System.out.println("--------------------------------");
+
+        System.out.println("\nPassou\n");
+
+        System.out.println("testLoginSucessfully() concluido.\n");
+
+    }
+
+    public void stage10_testLoginWrongPassword() {
+
+        System.out.println("\ntestLoginWrongPassword() rodando...\n");
+
+        System.out.println("Selecionando usuário");
+
+        String login = "pamelasilva";
+        String senha = "errada";
+
+        UsuariosDAO dao = new UsuariosDAO();
+
+        Usuarios u = null;
+
+        try {
+            System.out.println("Procurando usuario pamelasilva(senha incorreta) \n");
+            u = dao.login(login, senha);
+        } catch (NoResultException e) {
+            System.out.println("\nAcesso negado! Usuário não encontrado.");
+        }
+
+        // Verificando acertos(Deve ser nulo pois senha está incorreta)
+        assertNull(u);
+
+        System.out.println("\nPassou\n");
+
+        System.out.println("testLoginWrongPassword() concluido.\n");
 
     }
 

@@ -24,4 +24,7 @@ public interface IUsuariosDAO {
     public abstract Usuarios remove(Integer id);
 
     public abstract List<Usuarios> findByNomeLike(String nome);
+    
+    public abstract Usuarios login(String login, String senha);
+    
 }

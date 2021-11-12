@@ -1,6 +1,15 @@
 Iniciando testes da entidade Usuarios
 Conectando ao banco de dados...
-
+Hibernate: 
+    
+    create table Usuarios (
+       id integer not null auto_increment,
+        nome varchar(80) not null,
+        login varchar(15) not null,
+        perfil varchar(20),
+        senha varchar(15) not null,
+        primary key (id)
+    ) engine=InnoDB
 testSave() rodando...
 
 Criando instancias de Usuarios...
@@ -75,7 +84,7 @@ testFindById() rodando...
 
 Gerando id...
 
-Procurando pelo id 4...
+Procurando pelo id 3...
 
 Hibernate: 
     select
@@ -89,13 +98,13 @@ Hibernate:
     where
         usuarios0_.id=?
 
-ID : 4
+ID : 3
 
-Nome : Pamela Silva
+Nome : Ulisses Passos
 
-Login : pam123
+Login : ulisses34
 
-Senha : 44444
+Senha : 55555
 
 Perfil : usuario
 
@@ -379,27 +388,106 @@ Passou
 
 testRemove() concluido.
 
+
+testLoginSucessfully() rodando...
+
+Selecionando usuário
+Procurando usuario pamelasilva 
+
+Procurando usuario pamelasilva(senha incorreta) 
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_2_,
+        usuarios0_.nome as nome2_2_,
+        usuarios0_.login as login3_2_,
+        usuarios0_.perfil as perfil4_2_,
+        usuarios0_.senha as senha5_2_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        (
+            usuarios0_.login in (
+                ?
+            )
+        ) 
+        and (
+            usuarios0_.senha in (
+                ?
+            )
+        )
+
+Usuário encontrado
+
+ID : 4
+
+Nome : Pamela Silva
+
+Login : pamelasilva
+
+Senha : silva45$
+
+Perfil : administrador
+--------------------------------
+
+Passou
+
+testLoginSucessfully() concluido.
+
+
+testLoginWrongPassword() rodando...
+
+Selecionando usuário
+Procurando usuario pamelasilva(senha incorreta) 
+
+Hibernate: 
+    select
+        usuarios0_.id as id1_2_,
+        usuarios0_.nome as nome2_2_,
+        usuarios0_.login as login3_2_,
+        usuarios0_.perfil as perfil4_2_,
+        usuarios0_.senha as senha5_2_ 
+    from
+        Usuarios usuarios0_ 
+    where
+        (
+            usuarios0_.login in (
+                ?
+            )
+        ) 
+        and (
+            usuarios0_.senha in (
+                ?
+            )
+        )
+
+Acesso negado! Usuário não encontrado.
+
+Passou
+
+testLoginWrongPassword() concluido.
+
 Encerrando conexão ao banco de dados...
 Encerrando testes da entidade Usuarios
-out 27, 2021 2:14:57 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+nov 12, 2021 1:20:48 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
 INFO: HHH000204: Processing PersistenceUnitInfo [name: systemPU]
-out 27, 2021 2:14:58 PM org.hibernate.Version logVersion
+nov 12, 2021 1:20:49 PM org.hibernate.Version logVersion
 INFO: HHH000412: Hibernate Core {5.4.11.Final}
-out 27, 2021 2:14:58 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+nov 12, 2021 1:20:49 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
 INFO: HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+nov 12, 2021 1:20:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
 WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+nov 12, 2021 1:20:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost/Sigeat]
-out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+nov 12, 2021 1:20:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH10001001: Connection properties: {user=root, password=****}
-out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+nov 12, 2021 1:20:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH10001003: Autocommit mode: false
-out 27, 2021 2:14:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+nov 12, 2021 1:20:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
 INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
-out 27, 2021 2:14:59 PM org.hibernate.dialect.Dialect <init>
+nov 12, 2021 1:20:50 PM org.hibernate.dialect.Dialect <init>
 INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-out 27, 2021 2:15:02 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
-INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5c84624f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-out 27, 2021 2:15:03 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+nov 12, 2021 1:20:51 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5fa47fea] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+nov 12, 2021 1:20:51 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
 INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]

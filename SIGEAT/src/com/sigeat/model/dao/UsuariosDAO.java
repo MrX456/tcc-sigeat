@@ -1,13 +1,13 @@
 /*
  * Classe responsavel pelo acesso e CRUD de Usuarios
  */
-
 package com.sigeat.model.dao;
 
 import com.sigeat.connection.ConnectionFactory;
 import com.sigeat.model.bean.Usuarios;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /*
@@ -15,7 +15,6 @@ import javax.persistence.Query;
  * @author Junior
  * Version : 1.0.0
  */
-
 public class UsuariosDAO implements IUsuariosDAO {
 
     @Override
@@ -101,7 +100,7 @@ public class UsuariosDAO implements IUsuariosDAO {
 
     @Override
     public Usuarios remove(Integer id) {
-        
+
         EntityManager em = new ConnectionFactory().getConnection();
 
         Usuarios usuario = null;
@@ -131,7 +130,7 @@ public class UsuariosDAO implements IUsuariosDAO {
 
     @Override
     public List<Usuarios> findByNomeLike(String nome) {
-        
+
         //Entity manager e conexão
         EntityManager em = new ConnectionFactory().getConnection();
 
@@ -155,6 +154,24 @@ public class UsuariosDAO implements IUsuariosDAO {
         }
 
         return usuarios;
+    }
+
+    @Override
+    public Usuarios login(String login, String senha) throws NoResultException {
+
+        EntityManager em = new ConnectionFactory().getConnection();
+
+        Usuarios usuario = null;
+
+        Query q = em.createQuery("from Usuarios usu where usu.login in :login and usu.senha in :senha");
+        q.setParameter("login", login);
+        q.setParameter("senha", senha);
+        usuario = (Usuarios) q.getSingleResult();
+        
+        em.close();
+
+        return usuario;
+
     }
 
 }

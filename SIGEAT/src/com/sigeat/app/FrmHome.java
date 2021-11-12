@@ -1,9 +1,9 @@
 /*
  * Tela principal do SIGEAT
  */
-
 package com.sigeat.app;
 
+import com.sigeat.controller.Session;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,35 +13,47 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 //para gerar relatórios
 import java.sql.*;
+import java.util.Locale;
 
 /*
  * SIGEAT/ Application /Home
  * @author Junior
  * Version : 1.0.0
  */
-
 public class FrmHome extends javax.swing.JFrame {
 
     Connection conexao = null;
-    
+
     public FrmHome() {
+
         initComponents();
+        mitUsuarios.setVisible(false);
+        mitRelatorios.setVisible(false);
+
+        this.setTitle("SIGEAT - " + Session.getNome());
+        lblUsuario.setText(Session.getLogin());
         
-        /*conexao = ModuloConexao.conector();*/
-        
+        this.setPermissao();
+
         this.setExtendedState(MAXIMIZED_BOTH);
-        //mitUsuarios.setEnabled(false);
     }
-    
+
     private void sair() {
         int exit = JOptionPane.showConfirmDialog(null, "Deseja sair do SIGEAT?",
                 "Sair?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        
-        if(exit == 0)
+
+        if (exit == 0) {
             System.exit(0);
+        }
     }
 
-    
+    private void setPermissao() {
+        if (Session.getPerfil().equals("administrador")) {
+            mitUsuarios.setVisible(true);
+            mitRelatorios.setVisible(true);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -51,6 +63,9 @@ public class FrmHome extends javax.swing.JFrame {
         imgLogo = new javax.swing.JLabel();
         lblSair = new javax.swing.JLabel();
         Desktop = new javax.swing.JDesktopPane();
+        lblUsuario = new javax.swing.JLabel();
+        lblData = new javax.swing.JLabel();
+        lblDayofWeek = new javax.swing.JLabel();
         menMenu = new javax.swing.JMenuBar();
         mitUsuarios = new javax.swing.JMenu();
         mitUsuariosNovo = new javax.swing.JMenuItem();
@@ -116,8 +131,28 @@ public class FrmHome extends javax.swing.JFrame {
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 538, Short.MAX_VALUE)
+            .addGap(0, 535, Short.MAX_VALUE)
         );
+
+        lblUsuario.setForeground(new java.awt.Color(102, 102, 102));
+        lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsuario.setText("..");
+
+        lblData.setBackground(new java.awt.Color(215, 232, 242));
+        lblData.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblData.setForeground(new java.awt.Color(0, 51, 102));
+        lblData.setText("Data");
+        lblData.setToolTipText("");
+        lblData.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblData.setOpaque(true);
+
+        lblDayofWeek.setBackground(new java.awt.Color(215, 232, 242));
+        lblDayofWeek.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDayofWeek.setForeground(new java.awt.Color(0, 51, 102));
+        lblDayofWeek.setText("day of week");
+        lblDayofWeek.setToolTipText("");
+        lblDayofWeek.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblDayofWeek.setOpaque(true);
 
         javax.swing.GroupLayout panFundoLayout = new javax.swing.GroupLayout(panFundo);
         panFundo.setLayout(panFundoLayout);
@@ -128,15 +163,24 @@ public class FrmHome extends javax.swing.JFrame {
                 .addComponent(imgLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSigeat, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 945, Short.MAX_VALUE)
-                .addComponent(lblSair, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 784, Short.MAX_VALUE)
+                .addGroup(panFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panFundoLayout.createSequentialGroup()
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(lblSair, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap()))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFundoLayout.createSequentialGroup()
+                        .addComponent(lblDayofWeek, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
             .addComponent(Desktop)
         );
         panFundoLayout.setVerticalGroup(
             panFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panFundoLayout.createSequentialGroup()
-                .addGroup(panFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panFundoLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(panFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +188,13 @@ public class FrmHome extends javax.swing.JFrame {
                             .addComponent(lblSigeat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panFundoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblSair)))
+                        .addGroup(panFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSair)
+                            .addComponent(lblUsuario))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDayofWeek, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblData)))
                 .addGap(18, 18, 18)
                 .addComponent(Desktop))
         );
@@ -321,7 +371,6 @@ public class FrmHome extends javax.swing.JFrame {
         Screens.abrirOSWindow(Desktop);
     }//GEN-LAST:event_mitServicosOSActionPerformed
 
-    //Método que mostra data e hora atual
     private void mostraData() {
         new Timer(0, new ActionListener() {
 
@@ -329,13 +378,15 @@ public class FrmHome extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 Date data = new Date();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - kk:mm:ss");
-                 // Colocando data e hora atual na label
-                //lblData.setText(sdf.format(data));
+                // Colocando data e hora atual na label
+                lblData.setText(sdf.format(data));
+                SimpleDateFormat sdf2 = new SimpleDateFormat("EEEE", new Locale("pt", "BR"));
+                lblDayofWeek.setText(sdf2.format(data));
             }
-            
+
         }).start();
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -377,8 +428,11 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel imgLogo;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JLabel lblData;
+    private javax.swing.JLabel lblDayofWeek;
     private javax.swing.JLabel lblSair;
     private javax.swing.JLabel lblSigeat;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JMenuBar menMenu;
     private javax.swing.JMenu mitAjuda;
     private javax.swing.JMenuItem mitAjudaSobre;

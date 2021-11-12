@@ -1,15 +1,15 @@
 /*
  * Tela de carregamento do SIGEAT
  */
-
 package com.sigeat.app;
 
+import com.sigeat.connection.ConnectionFactory;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.MemoryImageSource;
-import java.sql.Connection;
+import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
 
 /*
@@ -17,86 +17,72 @@ import javax.swing.JOptionPane;
  * @author Junior
  * Version : 1.0.0
  */
-
 public class FrmSplashScreen extends javax.swing.JFrame {
 
-    //We need Connection object
-    Connection conn = null;
-      
     public FrmSplashScreen() {
-        
+
         initComponents();
         // Custom icon for jar and Jframe
         /*this.setIconImage(CoolStuff.createIcon().getImage());*/
         hideCursor();
         fillBar();
     }
- 
+
     //Fill progress bar method
     private void fillBar() {
         pbLoading.setVisible(false);
-        lblStatus.setText("Testando...");
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
-                //Bar load until 100
-                for(int i = 0; i < 101; i++) {
+
+                for (int i = 0; i < 101; i++) {
                     try {
-                        
+
                         sleep(60);
                         pbLoading.setValue(i);
-                        
-                        //Try to connect to database
-                        if(i == 30) {
-                            lblStatus.setText("trying to connect to database...");
-                            //conn = DAL.requestConnection();
-                            
-                            //Connection failed
-                            if(conn != null) {
+
+                        //Testar conexão 
+                        if (i == 30) {
+                            try {
+                                lblStatus.setText("Tentando conectar ao banco de dados...");
+                                EntityManager emf = ConnectionFactory.getConnection();
+                                emf.close();
+                            }
+                            catch(ExceptionInInitializerError e) {
                                 FrmSplashScreen.this.dispose();
-                                
-                                //Lets play warning sound with our method
-                                /*AudioWarning aw = new AudioWarning();
-                                aw.errorWarning();*/
-                                
-                                JOptionPane.showMessageDialog(null, "Cannot connect to database!", 
-                                      "Connection error", JOptionPane.ERROR_MESSAGE);
-                                //We must close the application
+
+                                JOptionPane.showMessageDialog(null, "Não foi possivel conectar-se ao banco de dados!"
+                                        + "\nVerifique se o banco de dados está em execução!",
+                                        "Erro de conexão", JOptionPane.ERROR_MESSAGE);
+                                //Fechar aplicação
                                 System.exit(0);
                             }
+                        } else if (i == 80) {
+                            lblStatus.setText("Carregando dados...");
                         }
-                        else if(i == 80) {
-                            lblStatus.setText("loading data...");
-                        }
-                        
+
                     } catch (Exception e) {
-                        
-                        //Logs.generateExceptionLog(e.toString());
+
+                        e.printStackTrace();
                     }
-                    
+
                 }
-                //Open login jframe
                 FrmSplashScreen.this.dispose();
-                //FrmHome login = new FrmHome();
                 FrmLogin login = new FrmLogin();
                 login.setVisible(true);
             }
         }.start();
     }
-    
-    //This method hide the cursor in this screen
+
     private void hideCursor() {
-        
-        //Let's create transparent image and set it as cursor
-        int[] pixels = new int[16*16];
+        int[] pixels = new int[16 * 16];
         Image img = Toolkit.getDefaultToolkit().createImage(
-        new MemoryImageSource(16, 16, pixels, 0, 16));
-        Cursor transparentCursor = 
-        Toolkit.getDefaultToolkit().createCustomCursor
-                                (img,new Point(0, 0), "invisible cursor");
+                new MemoryImageSource(16, 16, pixels, 0, 16));
+        Cursor transparentCursor
+                = Toolkit.getDefaultToolkit().createCustomCursor(img, new Point(0, 0), "invisible cursor");
         this.setCursor(transparentCursor);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -113,8 +99,9 @@ public class FrmSplashScreen extends javax.swing.JFrame {
         pbLoading.setBounds(80, 240, 280, 20);
 
         lblStatus.setForeground(new java.awt.Color(255, 255, 255));
+        lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblStatus);
-        lblStatus.setBounds(110, 260, 210, 10);
+        lblStatus.setBounds(100, 260, 230, 20);
 
         lblWallPaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sigeat/images/splash_screen.png"))); // NOI18N
         getContentPane().add(lblWallPaper);
