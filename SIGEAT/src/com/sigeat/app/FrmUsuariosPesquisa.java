@@ -407,7 +407,6 @@ public class FrmUsuariosPesquisa extends javax.swing.JInternalFrame {
                         "Exclusão confirmada", JOptionPane.INFORMATION_MESSAGE);
             this.limparCampos();
         }
-        
     }//GEN-LAST:event_btnExcluirActionPerformed
 
 

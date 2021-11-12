@@ -67,8 +67,10 @@ public class UsuariosDAO implements IUsuariosDAO {
         } catch (Exception e) {
 
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Login ou senha inválidos!",
-                    "Acesso negado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Dados não encontrados!"
+                    + "\nVerifique se o banco de dados está em execução!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
+          
 
         } finally {
 
@@ -94,6 +96,9 @@ public class UsuariosDAO implements IUsuariosDAO {
         } catch (Exception e) {
 
             e.printStackTrace();
+             JOptionPane.showMessageDialog(null, "Dados não encontrados!"
+                    + "\nVerifique se o banco de dados está em execução!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
 
         } finally {
 
@@ -124,6 +129,9 @@ public class UsuariosDAO implements IUsuariosDAO {
 
             em.getTransaction().rollback();
             e.printStackTrace();
+             JOptionPane.showMessageDialog(null, "Erro ao remover usuário!"
+                    + "\nVerifique se o banco de dados está em execução!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
 
         } finally {
 
@@ -152,6 +160,9 @@ public class UsuariosDAO implements IUsuariosDAO {
         } catch (Exception e) {
 
             e.printStackTrace();
+             JOptionPane.showMessageDialog(null, "Dados não encontrados!"
+                    + "\nVerifique se o banco de dados está em execução!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
 
         } finally {
 

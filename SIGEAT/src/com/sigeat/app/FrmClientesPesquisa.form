@@ -234,6 +234,9 @@
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Digite o nome do cliente para fazer a pesquisa e clique sobre o registro desejado para editar"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomePesquisarKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="imgPesquisa">
               <Properties>
@@ -249,7 +252,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tblUsuarios">
+                <Component class="javax.swing.JTable" name="tblClientes">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
@@ -261,6 +264,9 @@
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value="Clique sobre o registro desejado para editar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblClientesMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -362,6 +368,9 @@
                   <Font name="Dialog" size="18" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnAtualizar">
               <Properties>
@@ -380,6 +389,9 @@
                   <Color id="Cursor em Forma de M&#xe3;o"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLimpar">
               <Properties>
@@ -398,6 +410,9 @@
                   <Color id="Cursor em Forma de M&#xe3;o"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnExcluir">
               <Properties>
@@ -416,6 +431,9 @@
                   <Color id="Cursor em Forma de M&#xe3;o"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -8,6 +8,7 @@ import com.sigeat.model.bean.Clientes;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
 
 /*
  * SIGEAT/ Model / DAO / Clientes
@@ -40,6 +41,9 @@ public class ClientesDAO implements IClientesDAO {
             //Desfazer alterações
             em.getTransaction().rollback();
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao salvar cliente!"
+                    + "\nVerifique se o banco de dados está em execução!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
         } finally {
             em.close();
         }
@@ -60,6 +64,9 @@ public class ClientesDAO implements IClientesDAO {
         } catch (Exception e) {
 
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Dados não encontrados!"
+                    + "\nVerifique se o banco de dados está em execução!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
 
         } finally {
 
@@ -83,6 +90,9 @@ public class ClientesDAO implements IClientesDAO {
         } catch (Exception e) {
 
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Dados não encontrados!"
+                    + "\nVerifique se o banco de dados está em execução!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
 
         } finally {
 
@@ -112,11 +122,12 @@ public class ClientesDAO implements IClientesDAO {
 
             em.getTransaction().rollback();
             e.printStackTrace();
+            //Tratar depois(Consistencia)
 
         } finally {
 
             em.close();
-
+            
         }
 
         return cliente;
@@ -139,6 +150,9 @@ public class ClientesDAO implements IClientesDAO {
         } catch (Exception e) {
 
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Dados não encontrados!"
+                    + "\nVerifique se o banco de dados está em execução!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
 
         } finally {
 

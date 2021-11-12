@@ -4,6 +4,14 @@
 
 package com.sigeat.app;
 
+import com.sigeat.controller.Controller;
+import com.sigeat.controller.ControllerClientes;
+import com.sigeat.model.bean.Clientes;
+import com.sigeat.model.dao.ClientesDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * SIGEAT/ Application / Clientes/ Pesquisa
  * @author Junior
@@ -17,8 +25,81 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
      */
     public FrmClientesPesquisa() {
         initComponents();
+        
+        this.mostrarDados();
     }
 
+     private void mostrarDados() {
+        ClientesDAO dao = new ClientesDAO();
+        List<Clientes> clientes = dao.findAll();
+        this.popularTabela(clientes);
+    }
+
+    private void filtrarDados() {
+        ClientesDAO dao = new ClientesDAO();
+        List<Clientes> clientes = dao.findByNomeLike(txtNomePesquisar.getText());
+        this.popularTabela(clientes);
+    }
+
+    private void popularTabela(List<Clientes> clientes) {
+        DefaultTableModel model = new DefaultTableModel();
+        tblClientes.setModel(model);
+
+        model.addColumn("Id");
+        model.addColumn("Nome");
+        model.addColumn("Endereço");
+        model.addColumn("Telefone");
+        model.addColumn("Email");
+
+        for (Clientes c : clientes) {
+            model.addRow(new Object[]{
+                        c.getId(),
+                        c.getNome(),
+                        c.getEndereco(),
+                        c.getTelefone(),
+                        c.getEmail()
+                    }
+            );
+        }
+
+        tblClientes.getColumnModel().getColumn(0).setMinWidth(25);
+        tblClientes.getColumnModel().getColumn(1).setMinWidth(150);
+        
+
+        lblTotal.setText("Total : " + String.valueOf(tblClientes.getRowCount()));
+    }
+
+    private void setarCampos() {
+        int puts = tblClientes.getSelectedRow();
+
+        txtID.setText(tblClientes.getModel().getValueAt(puts, 0).toString());
+        txtNome.setText(tblClientes.getModel().getValueAt(puts, 1).toString());
+        txtEndereco.setText(tblClientes.getModel().getValueAt(puts, 2).toString());
+        txtTelefone.setText(tblClientes.getModel().getValueAt(puts, 3).toString());
+        txtEmail.setText(tblClientes.getModel().getValueAt(puts, 4).toString());
+    }
+
+    private Clientes setCliente() {
+        Clientes c = new Clientes();
+        c.setId(Integer.parseInt(txtID.getText()));
+        c.setNome(txtNome.getText());
+        c.setEndereco(txtEndereco.getText());
+        c.setTelefone(txtTelefone.getText());
+        c.setEmail(txtEmail.getText());
+        return c;
+    }
+    
+    private void limparCampos() {
+        txtNomePesquisar.setText("");
+        txtID.setText("");
+        txtNome.setText("");
+        txtEndereco.setText("");
+        txtTelefone.setText("");
+        txtEmail.setText("");
+        
+        this.mostrarDados();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +116,7 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
         txtNomePesquisar = new javax.swing.JTextField();
         imgPesquisa = new javax.swing.JLabel();
         jScrollPane = new javax.swing.JScrollPane();
-        tblUsuarios = new javax.swing.JTable();
+        tblClientes = new javax.swing.JTable();
         lblTotal = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
@@ -72,10 +153,15 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
 
         txtNomePesquisar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtNomePesquisar.setToolTipText("Digite o nome do cliente para fazer a pesquisa e clique sobre o registro desejado para editar");
+        txtNomePesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNomePesquisarKeyReleased(evt);
+            }
+        });
 
         imgPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sigeat/images/search.png"))); // NOI18N
 
-        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -86,8 +172,13 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblUsuarios.setToolTipText("Clique sobre o registro desejado para editar");
-        jScrollPane.setViewportView(tblUsuarios);
+        tblClientes.setToolTipText("Clique sobre o registro desejado para editar");
+        tblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblClientesMouseClicked(evt);
+            }
+        });
+        jScrollPane.setViewportView(tblClientes);
 
         lblTotal.setForeground(new java.awt.Color(102, 102, 102));
         lblTotal.setText("Total :xx");
@@ -122,6 +213,11 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
         lblEmail.setText("Email :");
 
         txtEmail.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+        });
 
         btnAtualizar.setBackground(new java.awt.Color(86, 186, 236));
         btnAtualizar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -129,6 +225,11 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
         btnAtualizar.setText("Atualizar");
         btnAtualizar.setToolTipText("Cadastrar cliente");
         btnAtualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setBackground(new java.awt.Color(86, 186, 236));
         btnLimpar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -136,6 +237,11 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
         btnLimpar.setText("Limpar");
         btnLimpar.setToolTipText("Limpar todos os campos");
         btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setBackground(new java.awt.Color(255, 51, 51));
         btnExcluir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -143,6 +249,11 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
         btnExcluir.setText("Excluir");
         btnExcluir.setToolTipText("Excluir cliente");
         btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panNovoLayout = new javax.swing.GroupLayout(panNovo);
         panNovo.setLayout(panNovoLayout);
@@ -276,6 +387,51 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtNomePesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomePesquisarKeyReleased
+        this.filtrarDados();
+    }//GEN-LAST:event_txtNomePesquisarKeyReleased
+
+    private void tblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClientesMouseClicked
+        this.setarCampos();
+    }//GEN-LAST:event_tblClientesMouseClicked
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        Clientes cliente = this.setCliente();
+        ControllerClientes ctr = new ControllerClientes();
+        ClientesDAO dao = new ClientesDAO();
+        if(ctr.validate(cliente)) {
+            dao.save(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!",
+                        "Atualização confirmada", JOptionPane.INFORMATION_MESSAGE);
+            this.limparCampos();
+        }
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        this.limparCampos();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        ClientesDAO dao = new ClientesDAO();
+        int excluir = JOptionPane.showConfirmDialog(null, "Deseja excluir este cliente?",
+                "Excluir cliente?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (excluir == 0) {
+            //Antes de excluir verifque se há os vinculadas a este cliente 
+            dao.remove(Integer.parseInt(txtID.getText()));
+            JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!",
+                        "Exclusão confirmada", JOptionPane.INFORMATION_MESSAGE);
+            this.limparCampos();
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
+        Controller ctr = new Controller();
+        if(ctr.reachMaxLength(50, txtEmail.getText())) {
+            txtEmail.setText(txtEmail.getText().substring(0, 50));
+        }
+    }//GEN-LAST:event_txtEmailKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizar;
@@ -293,7 +449,7 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel panFundo;
     private javax.swing.JPanel panNovo;
-    private javax.swing.JTable tblUsuarios;
+    private javax.swing.JTable tblClientes;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtID;

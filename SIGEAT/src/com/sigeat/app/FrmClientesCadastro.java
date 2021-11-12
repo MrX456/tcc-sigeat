@@ -4,6 +4,12 @@
 
 package com.sigeat.app;
 
+import com.sigeat.controller.Controller;
+import com.sigeat.controller.ControllerClientes;
+import com.sigeat.model.bean.Clientes;
+import com.sigeat.model.dao.ClientesDAO;
+import javax.swing.JOptionPane;
+
 /*
  * SIGEAT/ Application / Clientes/ Cadastro
  * @author Junior
@@ -19,6 +25,23 @@ public class FrmClientesCadastro extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    private Clientes setCliente() {
+        Clientes c = new Clientes();
+        c.setNome(txtNome.getText());
+        c.setEndereco(txtEndereco.getText());
+        c.setTelefone(txtTelefone.getText());
+        c.setEmail(txtEmail.getText());
+        return c;
+    }
+    
+    private void limparCampos() {
+        txtNome.setText("");
+        txtEndereco.setText("");
+        txtTelefone.setText("");
+        txtEmail.setText("");
+        
+        txtNome.requestFocus();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,6 +104,11 @@ public class FrmClientesCadastro extends javax.swing.JInternalFrame {
         lblEmail.setText("Email :");
 
         txtEmail.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+        });
 
         btnCadastrar.setBackground(new java.awt.Color(86, 186, 236));
         btnCadastrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -88,6 +116,11 @@ public class FrmClientesCadastro extends javax.swing.JInternalFrame {
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.setToolTipText("Cadastrar cliente");
         btnCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setBackground(new java.awt.Color(86, 186, 236));
         btnLimpar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -95,6 +128,11 @@ public class FrmClientesCadastro extends javax.swing.JInternalFrame {
         btnLimpar.setText("Limpar");
         btnLimpar.setToolTipText("Limpar todos os campos");
         btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panNovoLayout = new javax.swing.GroupLayout(panNovo);
         panNovo.setLayout(panNovoLayout);
@@ -191,6 +229,29 @@ public class FrmClientesCadastro extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        Clientes cliente = this.setCliente();
+        ControllerClientes ctr = new ControllerClientes();
+        ClientesDAO dao = new ClientesDAO();
+        if(ctr.validate(cliente)) {
+            dao.save(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!",
+                        "Cadastro confirmado", JOptionPane.INFORMATION_MESSAGE);
+            this.limparCampos();
+        }
+    }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        this.limparCampos();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
+        Controller ctr = new Controller();
+        if(ctr.reachMaxLength(50, txtEmail.getText())) {
+            txtEmail.setText(txtEmail.getText().substring(0, 50));
+        }
+    }//GEN-LAST:event_txtEmailKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

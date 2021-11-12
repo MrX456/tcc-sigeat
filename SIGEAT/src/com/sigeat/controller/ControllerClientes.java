@@ -5,6 +5,7 @@
 package com.sigeat.controller;
 
 import com.sigeat.model.bean.Clientes;
+import javax.swing.JOptionPane;
 
 /*
  * SIGEAT/ Controller / Clientes
@@ -19,21 +20,24 @@ public class ControllerClientes extends Controller implements IControllerCliente
         
         if (cliente.getNome().trim().isEmpty() || cliente.getNome().length() > 80) {
 
-            //MESSAGE HERE
+            JOptionPane.showMessageDialog(null, "Preencha o campo nome corretamente! Máximo 80 caracteres",
+                    "Nome inválido", JOptionPane.ERROR_MESSAGE);
             return false;
 
         }
         
-        if (cliente.getEndereco().trim().isEmpty() || cliente.getEndereco().length() > 80) {
+        if (cliente.getEndereco().trim().isEmpty() || cliente.getEndereco().length() > 150) {
 
-            //MESSAGE HERE
+            JOptionPane.showMessageDialog(null, "Preencha o campo endereço corretamente! Máximo 150 caracteres",
+                    "Endereço inválido", JOptionPane.ERROR_MESSAGE);
             return false;
 
         }
         
         if (cliente.getTelefone().trim().isEmpty() || cliente.getTelefone().length() > 15) {
 
-            //MESSAGE HERE
+            JOptionPane.showMessageDialog(null, "Preencha o campo telefone corretamente! Máximo 15 caracteres",
+                    "Telefone inválido", JOptionPane.ERROR_MESSAGE);
             return false;
 
         }
