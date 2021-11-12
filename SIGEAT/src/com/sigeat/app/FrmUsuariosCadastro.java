@@ -4,6 +4,11 @@
 
 package com.sigeat.app;
 
+import com.sigeat.controller.ControllerUsuarios;
+import com.sigeat.model.bean.Usuarios;
+import com.sigeat.model.dao.UsuariosDAO;
+import javax.swing.JOptionPane;
+
 /*
  * SIGEAT/ Application / Usuarios/ Cadastro
  * @author Junior
@@ -18,7 +23,24 @@ public class FrmUsuariosCadastro extends javax.swing.JInternalFrame {
     public FrmUsuariosCadastro() {
         initComponents();
     }
-
+    
+    private Usuarios setUsuario() {
+        Usuarios u = new Usuarios();
+        u.setNome(txtNome.getText());
+        u.setLogin(txtLogin.getText());
+        u.setSenha(txtSenha.getText());
+        u.setPerfil(cboPerfil.getSelectedItem().toString());
+        return u;
+    }
+    
+    private void limparCampos() {
+        txtNome.setText("");
+        txtLogin.setText("");
+        txtSenha.setText("");
+        cboPerfil.setSelectedIndex(0);
+        
+        txtNome.requestFocus();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,6 +103,7 @@ public class FrmUsuariosCadastro extends javax.swing.JInternalFrame {
         cboPerfil.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         cboPerfil.setForeground(new java.awt.Color(102, 102, 102));
         cboPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "usuário", "administrador" }));
+        cboPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnCadastrar.setBackground(new java.awt.Color(86, 186, 236));
         btnCadastrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -88,6 +111,11 @@ public class FrmUsuariosCadastro extends javax.swing.JInternalFrame {
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.setToolTipText("Cadastrar usuário");
         btnCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setBackground(new java.awt.Color(86, 186, 236));
         btnLimpar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -95,6 +123,11 @@ public class FrmUsuariosCadastro extends javax.swing.JInternalFrame {
         btnLimpar.setText("Limpar");
         btnLimpar.setToolTipText("Limpar todos os campos");
         btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panNovoLayout = new javax.swing.GroupLayout(panNovo);
         panNovo.setLayout(panNovoLayout);
@@ -164,7 +197,7 @@ public class FrmUsuariosCadastro extends javax.swing.JInternalFrame {
         panFundoLayout.setHorizontalGroup(
             panFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panFundoLayout.createSequentialGroup()
-                .addContainerGap(215, Short.MAX_VALUE)
+                .addContainerGap(218, Short.MAX_VALUE)
                 .addComponent(panNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(214, Short.MAX_VALUE))
         );
@@ -190,6 +223,21 @@ public class FrmUsuariosCadastro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        Usuarios usuario = this.setUsuario();
+        ControllerUsuarios ctr = new ControllerUsuarios();
+        UsuariosDAO dao = new UsuariosDAO();
+        if(ctr.validate(usuario)) {
+            dao.save(usuario);
+            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!",
+                        "Cadastro confirmado", JOptionPane.INFORMATION_MESSAGE);
+            this.limparCampos();
+        }
+    }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        this.limparCampos();
+    }//GEN-LAST:event_btnLimparActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;

@@ -143,7 +143,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblData.setForeground(new java.awt.Color(0, 51, 102));
         lblData.setText("Data");
         lblData.setToolTipText("");
-        lblData.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblData.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblData.setOpaque(true);
 
         lblDayofWeek.setBackground(new java.awt.Color(215, 232, 242));
@@ -151,7 +151,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblDayofWeek.setForeground(new java.awt.Color(0, 51, 102));
         lblDayofWeek.setText("day of week");
         lblDayofWeek.setToolTipText("");
-        lblDayofWeek.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblDayofWeek.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblDayofWeek.setOpaque(true);
 
         javax.swing.GroupLayout panFundoLayout = new javax.swing.GroupLayout(panFundo);

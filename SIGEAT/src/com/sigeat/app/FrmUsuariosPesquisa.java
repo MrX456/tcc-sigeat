@@ -1,15 +1,20 @@
 /*
  * Tela de pesquisa, atualização e exclusão de usuários do SIGEAT
  */
-
 package com.sigeat.app;
+
+import com.sigeat.controller.ControllerUsuarios;
+import com.sigeat.model.bean.Usuarios;
+import com.sigeat.model.dao.UsuariosDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * SIGEAT/ Application / Usuarios/ Pesquisa
  * @author Junior
  * Version : 1.0.0
  */
-
 public class FrmUsuariosPesquisa extends javax.swing.JInternalFrame {
 
     /**
@@ -17,6 +22,79 @@ public class FrmUsuariosPesquisa extends javax.swing.JInternalFrame {
      */
     public FrmUsuariosPesquisa() {
         initComponents();
+
+        this.mostrarDados();
+    }
+
+    private void mostrarDados() {
+        UsuariosDAO dao = new UsuariosDAO();
+        List<Usuarios> usuarios = dao.findAll();
+        this.popularTabela(usuarios);
+    }
+
+    private void filtrarDados() {
+        UsuariosDAO dao = new UsuariosDAO();
+        List<Usuarios> usuarios = dao.findByNomeLike(txtNomePesquisar.getText());
+        this.popularTabela(usuarios);
+    }
+
+    private void popularTabela(List<Usuarios> usuarios) {
+        DefaultTableModel model = new DefaultTableModel();
+        tblUsuarios.setModel(model);
+
+        model.addColumn("Id");
+        model.addColumn("Nome");
+        model.addColumn("Login");
+        model.addColumn("Senha");
+        model.addColumn("Perfil");
+
+        for (Usuarios u : usuarios) {
+            model.addRow(
+                    new Object[]{
+                        u.getId(),
+                        u.getNome(),
+                        u.getLogin(),
+                        u.getSenha(),
+                        u.getPerfil()
+                    }
+            );
+        }
+
+        tblUsuarios.getColumnModel().getColumn(0).setMinWidth(25);
+        tblUsuarios.getColumnModel().getColumn(1).setMinWidth(200);
+
+        lblTotal.setText("Total : " + String.valueOf(tblUsuarios.getRowCount()));
+    }
+
+    private void setarCampos() {
+        int puts = tblUsuarios.getSelectedRow();
+
+        txtID.setText(tblUsuarios.getModel().getValueAt(puts, 0).toString());
+        txtNome.setText(tblUsuarios.getModel().getValueAt(puts, 1).toString());
+        txtLogin.setText(tblUsuarios.getModel().getValueAt(puts, 2).toString());
+        txtSenha.setText(tblUsuarios.getModel().getValueAt(puts, 3).toString());
+        cboPerfil.setSelectedItem(tblUsuarios.getModel().getValueAt(puts, 4));
+    }
+
+    private Usuarios setUsuario() {
+        Usuarios u = new Usuarios();
+        u.setId(Integer.parseInt(txtID.getText()));
+        u.setNome(txtNome.getText());
+        u.setLogin(txtLogin.getText());
+        u.setSenha(txtSenha.getText());
+        u.setPerfil(cboPerfil.getSelectedItem().toString());
+        return u;
+    }
+
+    private void limparCampos() {
+        txtNomePesquisar.setText("");
+        txtID.setText("");
+        txtNome.setText("");
+        txtLogin.setText("");
+        txtSenha.setText("");
+        cboPerfil.setSelectedIndex(0);
+
+        this.mostrarDados();
     }
 
     /**
@@ -72,6 +150,11 @@ public class FrmUsuariosPesquisa extends javax.swing.JInternalFrame {
 
         txtNomePesquisar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtNomePesquisar.setToolTipText("Digite o nome do usuário para fazer a pesquisa e clique sobre o registro desejado para editar");
+        txtNomePesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNomePesquisarKeyReleased(evt);
+            }
+        });
 
         imgPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sigeat/images/search.png"))); // NOI18N
 
@@ -87,6 +170,11 @@ public class FrmUsuariosPesquisa extends javax.swing.JInternalFrame {
             }
         ));
         tblUsuarios.setToolTipText("Clique sobre o registro desejado para editar");
+        tblUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane.setViewportView(tblUsuarios);
 
         lblTotal.setForeground(new java.awt.Color(102, 102, 102));
@@ -131,6 +219,11 @@ public class FrmUsuariosPesquisa extends javax.swing.JInternalFrame {
         btnAtualizar.setText("Atualizar");
         btnAtualizar.setToolTipText("Cadastrar usuário");
         btnAtualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
 
         btnLimpar.setBackground(new java.awt.Color(86, 186, 236));
         btnLimpar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -138,6 +231,11 @@ public class FrmUsuariosPesquisa extends javax.swing.JInternalFrame {
         btnLimpar.setText("Limpar");
         btnLimpar.setToolTipText("Limpar todos os campos");
         btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setBackground(new java.awt.Color(255, 51, 51));
         btnExcluir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -145,6 +243,11 @@ public class FrmUsuariosPesquisa extends javax.swing.JInternalFrame {
         btnExcluir.setText("Excluir");
         btnExcluir.setToolTipText("Excluir usuário");
         btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panNovoLayout = new javax.swing.GroupLayout(panNovo);
         panNovo.setLayout(panNovoLayout);
@@ -268,6 +371,44 @@ public class FrmUsuariosPesquisa extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNomePesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomePesquisarKeyReleased
+        this.filtrarDados();
+    }//GEN-LAST:event_txtNomePesquisarKeyReleased
+
+    private void tblUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuariosMouseClicked
+        this.setarCampos();
+    }//GEN-LAST:event_tblUsuariosMouseClicked
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        Usuarios usuario = this.setUsuario();
+        ControllerUsuarios ctr = new ControllerUsuarios();
+        UsuariosDAO dao = new UsuariosDAO();
+        if(ctr.validate(usuario)) {
+            dao.save(usuario);
+            JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!",
+                        "Atualização confirmada", JOptionPane.INFORMATION_MESSAGE);
+            this.limparCampos();
+        }
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        this.limparCampos();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        UsuariosDAO dao = new UsuariosDAO();
+        int excluir = JOptionPane.showConfirmDialog(null, "Deseja excluir este usuário?",
+                "Excluir usuário?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (excluir == 0) {
+            dao.remove(Integer.parseInt(txtID.getText()));
+            JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!",
+                        "Exclusão confirmada", JOptionPane.INFORMATION_MESSAGE);
+            this.limparCampos();
+        }
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

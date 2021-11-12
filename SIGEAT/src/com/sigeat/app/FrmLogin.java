@@ -191,7 +191,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 FrmLogin.this.dispose();
                 FrmHome home = new FrmHome();
                 home.setVisible(true);
-            } catch (NoResultException e) {
+            } catch (Exception e) {
                 //Acesso negado
                 JOptionPane.showMessageDialog(null, "Login ou senha inválidos!",
                         "Acesso negado", JOptionPane.ERROR_MESSAGE);

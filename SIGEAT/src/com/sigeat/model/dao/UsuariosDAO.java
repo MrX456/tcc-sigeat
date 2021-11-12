@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
 
 /*
  * SIGEAT/ Model / DAO / Usuarios
@@ -42,6 +43,9 @@ public class UsuariosDAO implements IUsuariosDAO {
             //Desfazer alterações
             em.getTransaction().rollback();
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao salvar usuário!"
+                    + "\nVerifique se o banco de dados está em execução!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
         } finally {
             em.close();
         }
@@ -63,6 +67,8 @@ public class UsuariosDAO implements IUsuariosDAO {
         } catch (Exception e) {
 
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Login ou senha inválidos!",
+                    "Acesso negado", JOptionPane.ERROR_MESSAGE);
 
         } finally {
 
@@ -167,7 +173,7 @@ public class UsuariosDAO implements IUsuariosDAO {
         q.setParameter("login", login);
         q.setParameter("senha", senha);
         usuario = (Usuarios) q.getSingleResult();
-        
+
         em.close();
 
         return usuario;
