@@ -23,5 +23,27 @@ public class Controller implements IController {
         }
         
     }
+
+    @Override
+    public boolean isNumber(String text) {
+        try {
+            Integer.parseInt(text);
+            return true;
+        }
+        catch(NumberFormatException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean isDouble(String text) {
+         try {
+            Double.parseDouble(text);
+            return true;
+        }
+        catch(NumberFormatException e) {
+            return false;
+        }
+    }
     
 }

@@ -4,6 +4,7 @@
 package com.sigeat.controller;
 
 import com.sigeat.model.bean.OS;
+import javax.swing.JOptionPane;
 
 /*
  * SIGEAT/ Controller / OS
@@ -16,21 +17,24 @@ public class ControllerOS extends Controller implements IControllerOS {
     public boolean validate(OS os) {
         if (os.getEquipamento().trim().isEmpty() || os.getEquipamento().length() > 50) {
 
-            //MESSAGE HERE
+            JOptionPane.showMessageDialog(null, "Preencha o campo equipamento corretamente! Máximo 50 caracteres",
+                    "Equipamento inválido", JOptionPane.ERROR_MESSAGE);
             return false;
 
         }
         
         if (os.getDefeito().trim().isEmpty() || os.getDefeito().length() > 100) {
 
-            //MESSAGE HERE
+            JOptionPane.showMessageDialog(null, "Preencha o campo defeito corretamente! Máximo 100 caracteres",
+                    "Defeito inválido", JOptionPane.ERROR_MESSAGE);
             return false;
 
         }
         
         if(os.getCliente().getId().toString().trim().isEmpty()) {
             
-             //MESSAGE HERE
+             JOptionPane.showMessageDialog(null, "Selecione um cliente para vincular a OS!",
+                    "Cliente inválido", JOptionPane.ERROR_MESSAGE);
             return false;
             
         }

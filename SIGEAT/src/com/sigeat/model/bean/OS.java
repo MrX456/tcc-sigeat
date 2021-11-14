@@ -43,10 +43,7 @@ public class OS {
     
     @Column(nullable = false, length = 100)
     private String defeito;
-    
-    @Column(length = 100)
-    private String observacao;
-    
+        
     @Column(length = 100)
     private String servico;
     
@@ -105,14 +102,6 @@ public class OS {
 
     public void setDefeito(String defeito) {
         this.defeito = defeito;
-    }
-
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
     }
 
     public String getServico() {

@@ -14,4 +14,8 @@ public interface IController {
     
     public abstract boolean reachMaxLength(int maxLength, String text);
     
+    public abstract boolean isNumber(String text);
+    
+    public abstract boolean isDouble(String text);
+    
 }
