@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-//para gerar relatórios
 import java.sql.*;
 import java.util.Locale;
 
@@ -264,16 +263,31 @@ public class FrmHome extends javax.swing.JFrame {
 
         mitRelatoriosUsuarios.setText("Usuários");
         mitRelatoriosUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mitRelatoriosUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitRelatoriosUsuariosActionPerformed(evt);
+            }
+        });
         mitRelatorios.add(mitRelatoriosUsuarios);
         mitRelatorios.add(jSeparator1);
 
         mitRelatoriosClientes.setText("Clientes");
         mitRelatoriosClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mitRelatoriosClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitRelatoriosClientesActionPerformed(evt);
+            }
+        });
         mitRelatorios.add(mitRelatoriosClientes);
         mitRelatorios.add(jSeparator2);
 
         mitRelatoriosOS.setText("OS");
         mitRelatoriosOS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mitRelatoriosOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitRelatoriosOSActionPerformed(evt);
+            }
+        });
         mitRelatorios.add(mitRelatoriosOS);
 
         menMenu.add(mitRelatorios);
@@ -370,6 +384,18 @@ public class FrmHome extends javax.swing.JFrame {
     private void mitServicosOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitServicosOSActionPerformed
         Screens.abrirOSWindow(Desktop);
     }//GEN-LAST:event_mitServicosOSActionPerformed
+
+    private void mitRelatoriosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitRelatoriosUsuariosActionPerformed
+        Screens.abrirUsuariosReport();
+    }//GEN-LAST:event_mitRelatoriosUsuariosActionPerformed
+
+    private void mitRelatoriosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitRelatoriosClientesActionPerformed
+        Screens.abrirClientesReport();
+    }//GEN-LAST:event_mitRelatoriosClientesActionPerformed
+
+    private void mitRelatoriosOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitRelatoriosOSActionPerformed
+        Screens.abrirOSReport();
+    }//GEN-LAST:event_mitRelatoriosOSActionPerformed
 
     private void mostraData() {
         new Timer(0, new ActionListener() {

@@ -104,6 +104,9 @@
                   <Color id="Cursor em Forma de M&#xe3;o"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitRelatoriosUsuariosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
             </MenuItem>
@@ -114,6 +117,9 @@
                   <Color id="Cursor em Forma de M&#xe3;o"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitRelatoriosClientesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
             </MenuItem>
@@ -124,6 +130,9 @@
                   <Color id="Cursor em Forma de M&#xe3;o"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitRelatoriosOSActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

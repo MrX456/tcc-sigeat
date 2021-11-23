@@ -10,9 +10,13 @@ import com.sigeat.model.bean.OS;
 import com.sigeat.model.dao.ClientesDAO;
 import com.sigeat.model.dao.OSDAO;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -32,6 +36,7 @@ public class FrmOS extends javax.swing.JInternalFrame {
         initComponents();
         radOrcamento.setSelected(true);
         tipo = "Orçamento";
+        //lblHiddenTelefone.setVisible(false);
     }
 
     private void filtrarDados() {
@@ -71,6 +76,7 @@ public class FrmOS extends javax.swing.JInternalFrame {
 
         txtID.setText(tblClientes.getModel().getValueAt(puts, 0).toString());
         txtNome.setText(tblClientes.getModel().getValueAt(puts, 1).toString());
+
         btnCadastrar.setEnabled(true);
         btnPesquisar.setEnabled(false);
         btnAtualizar.setEnabled(false);
@@ -156,6 +162,23 @@ public class FrmOS extends javax.swing.JInternalFrame {
                     "Erro de OS", JOptionPane.ERROR_MESSAGE);
         }
 
+    }
+
+    private void imprimirOS(String path) {
+        OS os = this.setOS();
+        //setOS não insere a data
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - kk:mm:ss");
+        try {
+            os.setDt_os(sdf.parse(txtData.getText()));
+        } catch (ParseException ex) {
+        }
+        Reports rep = new Reports();
+        rep.osReport(os, path);
+    }
+
+    private void imprimirOS(OS os, String path) {
+        Reports rep = new Reports();
+        rep.osReport(os, path);
     }
 
     private void limparCampos() {
@@ -375,9 +398,6 @@ public class FrmOS extends javax.swing.JInternalFrame {
             .addGroup(panClienteLayout.createSequentialGroup()
                 .addGroup(panClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panClienteLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panClienteLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(panClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panClienteLayout.createSequentialGroup()
@@ -389,7 +409,10 @@ public class FrmOS extends javax.swing.JInternalFrame {
                             .addGroup(panClienteLayout.createSequentialGroup()
                                 .addComponent(lblId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panClienteLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         panClienteLayout.setVerticalGroup(
@@ -407,7 +430,7 @@ public class FrmOS extends javax.swing.JInternalFrame {
                     .addComponent(lblId))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         txtEquipamento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -661,8 +684,18 @@ public class FrmOS extends javax.swing.JInternalFrame {
             dao.save(os);
             JOptionPane.showMessageDialog(null, "OS gerada com sucesso!",
                     "OS gerada", JOptionPane.INFORMATION_MESSAGE);
+            //Imprima a OS para ficar junto ao equipamento recebido(Pasta em meus documentos)
+            //Retorne a lista de todas os cadastradas
+            List<OS> osList = dao.findAll();
+            //Pegue o ultimo elemento(OS que acabou de ser registrada)
+            os = osList.get(osList.size() - 1);
+
+            //Agora temos todos os dados para gerar o relatório
+            Reports rep = new Reports();
+            rep.createTempFolder();
+            String path = System.getProperty("user.home") + "\\Documents\\SIGEAT\\temp\\orcamento.pdf";
+            this.imprimirOS(os, path);
             this.limparCampos();
-            //Imprima a OS para consultas posteriores e atualizações
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
@@ -700,28 +733,49 @@ public class FrmOS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        // TODO add your handling code here:
+        Reports rep = new Reports();
+        rep.createOSFolder();
+
+        int imprimir = JOptionPane.showConfirmDialog(null, "Deseja imprimir esta OS?",
+                "Imprimir OS?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (imprimir == 0) {
+            //Selecionar onde vai salvar a OS
+            JFileChooser save = new JFileChooser(System.getProperty("user.home") + "\\Documents\\SIGEAT\\Minhas OS");
+            save.setDialogTitle("Salvar OS");
+            save.setAcceptAllFileFilterUsed(false); //remove "all files option"
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("PDF", "pdf");
+            save.setFileFilter(filter);
+            int excelChooser = save.showSaveDialog(null);
+
+            if (excelChooser == JFileChooser.APPROVE_OPTION) {
+                String path = save.getSelectedFile().getAbsolutePath() + ".pdf";
+                this.imprimirOS(path);
+            }
+
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void txtServicoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtServicoKeyReleased
         Controller ctr = new Controller();
-        if(ctr.reachMaxLength(100, txtServico.getText())) {
+        if (ctr.reachMaxLength(100, txtServico.getText())) {
             txtServico.setText(txtServico.getText().substring(0, 100));
         }
     }//GEN-LAST:event_txtServicoKeyReleased
 
     private void txtTecnicoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTecnicoKeyReleased
         Controller ctr = new Controller();
-        if(ctr.reachMaxLength(50, txtTecnico.getText())) {
+        if (ctr.reachMaxLength(50, txtTecnico.getText())) {
             txtTecnico.setText(txtTecnico.getText().substring(0, 50));
         }
     }//GEN-LAST:event_txtTecnicoKeyReleased
 
     private void txtValorTotalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorTotalKeyReleased
         Controller ctr = new Controller();
-        if(ctr.isDouble(txtValorTotal.getText().replace(",", "."))) {}
-        else
+        if (ctr.isDouble(txtValorTotal.getText().replace(",", "."))) {
+        } else {
             txtValorTotal.setText("");
+        }
     }//GEN-LAST:event_txtValorTotalKeyReleased
 
 

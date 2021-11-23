@@ -419,8 +419,6 @@ public class FrmClientesPesquisa extends javax.swing.JInternalFrame {
         if (excluir == 0) {
             //Antes de excluir verifque se há os vinculadas a este cliente 
             dao.remove(Integer.parseInt(txtID.getText()));
-            JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!",
-                        "Exclusão confirmada", JOptionPane.INFORMATION_MESSAGE);
             this.limparCampos();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed

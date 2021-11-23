@@ -117,12 +117,16 @@ public class ClientesDAO implements IClientesDAO {
             em.getTransaction().begin();
             em.remove(cliente);
             em.getTransaction().commit();
+            JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!",
+                        "Exclusão confirmada", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
 
             em.getTransaction().rollback();
             e.printStackTrace();
-            //Tratar depois(Consistencia)
+            JOptionPane.showMessageDialog(null, "Erro ao excluir cliente!"
+                    + "\nEste cliente está vinculado à uma ou mais OS!",
+                    "Operação não concluída", JOptionPane.ERROR_MESSAGE);
 
         } finally {
 
