@@ -5,6 +5,7 @@ package com.sigeat.app;
 
 import com.sigeat.controller.Session;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import java.sql.*;
 import java.util.Locale;
+import javax.swing.ImageIcon;
 
 /*
  * SIGEAT/ Application /Home
@@ -20,8 +22,6 @@ import java.util.Locale;
  * Version : 1.0.0
  */
 public class FrmHome extends javax.swing.JFrame {
-
-    Connection conexao = null;
 
     public FrmHome() {
 
@@ -31,10 +31,13 @@ public class FrmHome extends javax.swing.JFrame {
 
         this.setTitle("SIGEAT - " + Session.getNome());
         lblUsuario.setText(Session.getLogin());
-        
+
         this.setPermissao();
 
         this.setExtendedState(MAXIMIZED_BOTH);
+
+        ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/com/sigeat/images/logo_big.png"));
+        this.setIconImage(icon.getImage());
     }
 
     private void sair() {
@@ -51,6 +54,22 @@ public class FrmHome extends javax.swing.JFrame {
             mitUsuarios.setVisible(true);
             mitRelatorios.setVisible(true);
         }
+    }
+    
+    private void mostraData() {
+        new Timer(0, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date data = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - kk:mm:ss");
+                // Colocando data e hora atual na label
+                lblData.setText(sdf.format(data));
+                SimpleDateFormat sdf2 = new SimpleDateFormat("EEEE", new Locale("pt", "BR"));
+                lblDayofWeek.setText(sdf2.format(data));
+            }
+
+        }).start();
     }
 
     @SuppressWarnings("unchecked")
@@ -81,8 +100,11 @@ public class FrmHome extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         mitRelatoriosOS = new javax.swing.JMenuItem();
         mitFerramentas = new javax.swing.JMenu();
+        mitFerramentasCalculadora = new javax.swing.JMenuItem();
+        mitFerramentasCalendario = new javax.swing.JMenuItem();
         mitAjuda = new javax.swing.JMenu();
         mitAjudaSobre = new javax.swing.JMenuItem();
+        mitAjudaAtalhos = new javax.swing.JMenuItem();
         mitOpcoes = new javax.swing.JMenu();
         mitOpcoesSair = new javax.swing.JMenuItem();
 
@@ -201,6 +223,7 @@ public class FrmHome extends javax.swing.JFrame {
         mitUsuarios.setText("Usuários");
         mitUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        mitUsuariosNovo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK));
         mitUsuariosNovo.setText("Novo");
         mitUsuariosNovo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mitUsuariosNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -210,6 +233,7 @@ public class FrmHome extends javax.swing.JFrame {
         });
         mitUsuarios.add(mitUsuariosNovo);
 
+        mitUsuariosPesquisar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
         mitUsuariosPesquisar.setText("Pesquisar");
         mitUsuariosPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mitUsuariosPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +248,7 @@ public class FrmHome extends javax.swing.JFrame {
         mitClientes.setText("Clientes");
         mitClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        mitClientesNovo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
         mitClientesNovo.setText("Novo");
         mitClientesNovo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mitClientesNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -233,6 +258,7 @@ public class FrmHome extends javax.swing.JFrame {
         });
         mitClientes.add(mitClientesNovo);
 
+        mitClientesPesquisar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         mitClientesPesquisar.setText("Pesquisar");
         mitClientesPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mitClientesPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +273,7 @@ public class FrmHome extends javax.swing.JFrame {
         mitServicos.setText("Serviços");
         mitServicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        mitServicosOS.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_MASK));
         mitServicosOS.setText("OS");
         mitServicosOS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mitServicosOS.addActionListener(new java.awt.event.ActionListener() {
@@ -294,11 +321,33 @@ public class FrmHome extends javax.swing.JFrame {
 
         mitFerramentas.setText("Ferramentas");
         mitFerramentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        mitFerramentasCalculadora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.ALT_MASK));
+        mitFerramentasCalculadora.setText("Calculadora");
+        mitFerramentasCalculadora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mitFerramentasCalculadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitFerramentasCalculadoraActionPerformed(evt);
+            }
+        });
+        mitFerramentas.add(mitFerramentasCalculadora);
+
+        mitFerramentasCalendario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        mitFerramentasCalendario.setText("Calendário");
+        mitFerramentasCalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mitFerramentasCalendario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitFerramentasCalendarioActionPerformed(evt);
+            }
+        });
+        mitFerramentas.add(mitFerramentasCalendario);
+
         menMenu.add(mitFerramentas);
 
         mitAjuda.setText("Ajuda");
         mitAjuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        mitAjudaSobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
         mitAjudaSobre.setText("Sobre");
         mitAjudaSobre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mitAjudaSobre.addActionListener(new java.awt.event.ActionListener() {
@@ -308,11 +357,22 @@ public class FrmHome extends javax.swing.JFrame {
         });
         mitAjuda.add(mitAjudaSobre);
 
+        mitAjudaAtalhos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
+        mitAjudaAtalhos.setText("Atalhos de Teclado");
+        mitAjudaAtalhos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mitAjudaAtalhos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitAjudaAtalhosActionPerformed(evt);
+            }
+        });
+        mitAjuda.add(mitAjudaAtalhos);
+
         menMenu.add(mitAjuda);
 
         mitOpcoes.setText("Opções");
         mitOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        mitOpcoesSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         mitOpcoesSair.setText("Sair");
         mitOpcoesSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mitOpcoesSair.addActionListener(new java.awt.event.ActionListener() {
@@ -397,21 +457,17 @@ public class FrmHome extends javax.swing.JFrame {
         Screens.abrirOSReport();
     }//GEN-LAST:event_mitRelatoriosOSActionPerformed
 
-    private void mostraData() {
-        new Timer(0, new ActionListener() {
+    private void mitFerramentasCalculadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitFerramentasCalculadoraActionPerformed
+        Screens.abrirCalculadora();
+    }//GEN-LAST:event_mitFerramentasCalculadoraActionPerformed
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Date data = new Date();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - kk:mm:ss");
-                // Colocando data e hora atual na label
-                lblData.setText(sdf.format(data));
-                SimpleDateFormat sdf2 = new SimpleDateFormat("EEEE", new Locale("pt", "BR"));
-                lblDayofWeek.setText(sdf2.format(data));
-            }
+    private void mitFerramentasCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitFerramentasCalendarioActionPerformed
+        Screens.abrirCalendario();
+    }//GEN-LAST:event_mitFerramentasCalendarioActionPerformed
 
-        }).start();
-    }
+    private void mitAjudaAtalhosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitAjudaAtalhosActionPerformed
+        Screens.abrirAtalhos();
+    }//GEN-LAST:event_mitAjudaAtalhosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,11 +517,14 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JMenuBar menMenu;
     private javax.swing.JMenu mitAjuda;
+    private javax.swing.JMenuItem mitAjudaAtalhos;
     private javax.swing.JMenuItem mitAjudaSobre;
     private javax.swing.JMenu mitClientes;
     private javax.swing.JMenuItem mitClientesNovo;
     private javax.swing.JMenuItem mitClientesPesquisar;
     private javax.swing.JMenu mitFerramentas;
+    private javax.swing.JMenuItem mitFerramentasCalculadora;
+    private javax.swing.JMenuItem mitFerramentasCalendario;
     private javax.swing.JMenu mitOpcoes;
     private javax.swing.JMenuItem mitOpcoesSair;
     private javax.swing.JMenu mitRelatorios;

@@ -4,6 +4,9 @@
 
 package com.sigeat.app;
 
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+
 /*
  * SIGEAT/ Application /Sobre
  * @author Junior
@@ -18,6 +21,9 @@ public class FrmSobre extends javax.swing.JDialog {
     public FrmSobre(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/com/sigeat/images/logo_big.png"));
+        this.setIconImage(icon.getImage());
     }
 
     /**

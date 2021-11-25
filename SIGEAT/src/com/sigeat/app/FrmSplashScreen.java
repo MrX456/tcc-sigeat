@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.MemoryImageSource;
 import javax.persistence.EntityManager;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -26,6 +27,9 @@ public class FrmSplashScreen extends javax.swing.JFrame {
         /*this.setIconImage(CoolStuff.createIcon().getImage());*/
         hideCursor();
         fillBar();
+
+        ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/com/sigeat/images/logo_big.png"));
+        this.setIconImage(icon.getImage());
     }
 
     //Fill progress bar method
@@ -47,8 +51,7 @@ public class FrmSplashScreen extends javax.swing.JFrame {
                                 lblStatus.setText("Tentando conectar ao banco de dados...");
                                 EntityManager emf = ConnectionFactory.getConnection();
                                 emf.close();
-                            }
-                            catch(ExceptionInInitializerError e) {
+                            } catch (ExceptionInInitializerError e) {
                                 FrmSplashScreen.this.dispose();
 
                                 JOptionPane.showMessageDialog(null, "Não foi possivel conectar-se ao banco de dados!"

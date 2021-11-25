@@ -5,7 +5,9 @@ package com.sigeat.app;
 
 import com.sigeat.model.bean.Usuarios;
 import com.sigeat.model.dao.UsuariosDAO;
+import java.awt.Toolkit;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +26,9 @@ public class FrmUsuariosReports extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         panTable.setVisible(false);
+        
+        ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/com/sigeat/images/logo_big.png"));
+        this.setIconImage(icon.getImage());
         
         this.mostrarDados();
     }

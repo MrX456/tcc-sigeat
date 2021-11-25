@@ -86,10 +86,31 @@ public class Screens {
 
     }
 
+    public static void abrirCalculadora() {
+
+        FrmCalculadora c = new FrmCalculadora(null, true);
+        c.setVisible(true);
+
+    }
+
+    public static void abrirCalendario() {
+
+        FrmCalendario c = new FrmCalendario(null, true);
+        c.setVisible(true);
+
+    }
+
     public static void abrirSobre() {
 
         FrmSobre s = new FrmSobre(null, true);
         s.setVisible(true);
+
+    }
+
+    public static void abrirAtalhos() {
+
+        FrmCartaoAtalhos a = new FrmCartaoAtalhos(null, true);
+        a.setVisible(true);
 
     }
 

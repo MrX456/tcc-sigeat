@@ -7,7 +7,8 @@ import com.sigeat.controller.Controller;
 import com.sigeat.controller.Session;
 import com.sigeat.model.bean.Usuarios;
 import com.sigeat.model.dao.UsuariosDAO;
-import javax.persistence.NoResultException;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -22,6 +23,9 @@ public class FrmLogin extends javax.swing.JFrame {
      */
     public FrmLogin() {
         initComponents();
+        
+        ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/com/sigeat/images/logo_big.png"));
+        this.setIconImage(icon.getImage());
     }
 
     /**
