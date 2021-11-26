@@ -50,6 +50,8 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
   
  Instale o SIGEAT, através do arquivo “sigeat_installer_1.0.0.exe”.
   
+  Dúvidas consulte o <a href="https://github.com/MrX456/tcc-sigeat/raw/main/_Deploy/mysql%205.5%20%2B%20workbench.rar">manual</a>.
+  
 </p>
 
 <p align="center">::</p>
