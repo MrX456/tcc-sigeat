@@ -4,7 +4,12 @@
   <img src="icon.png">
 </p>
 
-TCC Curso Engenharia da Computação Univesp
+<h2>Sobre</h2>
+
+<p>Sistema de Gerenciamento de Assistências Técnicas com Java, MySql e Hibernate.</p>
+<p>Trabalho de Conclusão de Curso apresentado à Universidade Virtual do Estado de São Paulo, do Curso de Engenharia da Computação.</p>
+<p>Versão : 1.0.0</p>
+<p>Desenvolvido por :</p>
 
 Grupo 33<br>
 HERBERT HUDSON GONÇALVES TRINDADE, RA 1817498<br>
@@ -13,12 +18,6 @@ MATHEUS DE FREITAS FUJII, RA 1805141<br>
 VICTOR GARDIM RODRIGUES, RA 1816313<br>
 BRUNO RAFAEL GIMENES, RA 1804160<br>
 GUILHERME RODRIGO DA SILVA, RA 1600376
-
-<h2>About</h2>
-
-<p>Solution description.</p>
-<p>Version : 1.0.0</p>
-<p>Developed By : MrX</p>
 
 
 <h2>Documentation</h2>
