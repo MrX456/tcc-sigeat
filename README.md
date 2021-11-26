@@ -22,17 +22,17 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
 
 <h2>Documentação</h2>
 
-<p>Documentação <a href="https://raw.githack.com/MrX456/Cars_Performance_Charts/main/_Documentation/C%23%20Doc/html/index.html">aqui</a></p>
+<p>Documentação <a href="https://raw.githack.com/MrX456/tcc-sigeat/_Documentação/javadoc/index.html">aqui</a></p>
 
 <h2>Requisitos</h2>
 <img src="/_Documentação/requisitos_img.png">
 
-<h2>Downloads</h2>`
+<h2>Downloads</h2>
 <p>Java 8 <a href="https://github.com/MrX456/tcc-sigeat/raw/main/_Deploy/java%208.rar">aqui</a></p>
 <p>MySql 5.5 + Workbench <a href="https://github.com/MrX456/tcc-sigeat/raw/main/_Deploy/mysql%205.5%20%2B%20workbench.rar">aqui</a></p>
 <p>SIGEAT 1.0.0 <a href="https://github.com/MrX456/tcc-sigeat/raw/main/_Deploy/sigeat_1.0.0.rar">aqui</a></p>
 
-<h2>Instalação</h2>`
+<h2>Instalação</h2>
 <p>
  Antes de instalar o SIGEAT é necessário a instalação do JRE 8 e do MySql 5. 5 e do MySql Workbench.
 
