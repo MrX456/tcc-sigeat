@@ -24,13 +24,13 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
 
 <p>Documentação <a href="https://raw.githack.com/MrX456/Cars_Performance_Charts/main/_Documentation/C%23%20Doc/html/index.html">aqui</a></p>
 
-
-<h2>Deployment</h2>
-
-<p>Download {path} <a href="https://github.com/MrX456/Cars_Performance_Charts/raw/main/_Deployment/cars_perfomance_charts_install.msi">aqui</a></p>
-
 <h2>Requisitos</h2>
 <p>Lista de requisitos</p>
+
+<h2>Download</h2>`
+<p>Download {path} <a href="https://github.com/MrX456/Cars_Performance_Charts/raw/main/_Deployment/cars_perfomance_charts_install.msi">aqui</a></p>
+
+
 
 
 <p align="center">::</p>
