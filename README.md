@@ -4,6 +4,8 @@
   <img src="icon.png">
 </p>
 
+<p align="center"><a href="https://github.com/MrX456/tcc-sigeat/issues/new"> Reportar um problema </a></p>
+
 <h2>Tabela de conteúdo</h2>
 <ul>
   <p> <a href="https://github.com/MrX456/tcc-sigeat/blob/master/README.md#sobre">Sobre o SIGEAT.</a> </p>
