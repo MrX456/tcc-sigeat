@@ -4,6 +4,19 @@
   <img src="icon.png">
 </p>
 
+<h2>Tabela de conteúdo</h2>
+<ul>
+  <p> <a href="https://github.com/MrX456/tcc-sigeat/blob/master/README.md#sobre">Sobre o Reflex.</a> </p>
+  <p> <a href="https://github.com/MrX456/reflex/blob/master/README.md#download">Download.</a> </p>
+  <p> <a href="https://github.com/MrX456/reflex/blob/master/README.md#instalação">Instalação.</a> </p>
+  <p> <a href="https://github.com/MrX456/reflex/blob/master/README.md#tutorial">Tutorial.</a> </p>
+  <p> <a href="https://github.com/MrX456/reflex/blob/master/README.md#contribuição">Contribuição.</a> </p>
+  <p> <a href="https://github.com/MrX456/reflex/blob/master/README.md#criadores">Criadores.</a> </p>
+  <p> <a href="https://github.com/MrX456/reflex/blob/master/README.md#colaboradores">Colaboradores.</a> </p>
+  <p> <a href="https://github.com/MrX456/reflex/blob/master/README.md#quantum-comp-it-solutions">Quantum Comp IT Solutions.</a> </p>
+  <p> <a href="https://github.com/MrX456/reflex/blob/master/README.md#copyright-e-licença">Copyright e Licença.</a> </p>
+</ul>
+
 <h2>Sobre</h2>
 
 <p>Sistema de Gerenciamento de Assistências Técnicas com Java, MySql e Hibernate.</p>
