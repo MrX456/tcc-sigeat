@@ -22,7 +22,7 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
 
 <h2>Documentação</h2>
 
-<p>Documentação <a href="https://raw.githack.com/MrX456/tcc-sigeat/_Documenta%C3%A7%C3%A3o/javadoc/index.html">aqui</a></p>
+<p>Documentação <a href="https://github.com/MrX456/tcc-sigeat/tree/main/_Documenta%C3%A7%C3%A3o">aqui</a></p>
 
 <h2>Requisitos</h2>
 <img src="/_Documentação/requisitos_img.png">
