@@ -1,8 +1,8 @@
-name: Report bug
-about: Describe the bug what you found.
-title: "[DATE]: [FEATURE NAME]"
-labels: tracking issue, needs triage
+nome: Reporte o problema
+sobre: Descreva o problema encontrado.
+titulo: "[DATE]: [FEATURE NAME]"
+etiquetas: tracking issue, needs triage
 assignees: octocat, octo-org/octo-team
 
-Bug reports must include :
-Your operating system and version.
+O relatório de problemas deve incluir :
+Seu sistema operacional e versão.
