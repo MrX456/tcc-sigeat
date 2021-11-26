@@ -33,7 +33,16 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
 <p>SIGEAT 1.0.0 <a href="https://github.com/MrX456/tcc-sigeat/raw/main/_Deploy/sigeat_1.0.0.rar">aqui</a></p>
 
 <h2>Instalação</h2>`
+<p>
+ Antes de instalar o SIGEAT é necessário a instalação do JRE 8 e do MySql 5. 5 e do MySql Workbench.
 
+ Instale o Java JRE 8 caso não tenha instalado.
+
+ Instale o servidor MySql 5. 5 caso não tenha instalado.
+ 
+ Instale o MySql Workbench caso não tenha instalado. Se houver problemas com dll utilize os arquivos da pasta “_redist”. Abra o Workbench e configure a conexão clicando no botão “+”, defina um nome para a conexão, depois teste a conexão e se estiver tudo correto aperte “OK” para finalizar.
+
+</p>
 
 <p align="center">::</p>
 
