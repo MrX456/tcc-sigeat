@@ -27,8 +27,10 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
 <h2>Requisitos</h2>
 <img src="/_Documentação/requisitos_img.png">
 
-<h2>Download</h2>`
-<p>Download {path} <a href="https://github.com/MrX456/Cars_Performance_Charts/raw/main/_Deployment/cars_perfomance_charts_install.msi">aqui</a></p>
+<h2>Downloads</h2>`
+<p>Java 8 <a href="https://github.com/MrX456/Cars_Performance_Charts/raw/main/_Deploy/java%208.rar">aqui</a></p>
+<p>MySql 5.5 + Workbench <a href="https://github.com/MrX456/Cars_Performance_Charts/raw/main/_Deploy/mysql%205.5%20%2B%20workbench.rar">aqui</a></p>
+<p>SIGEAT 1.0.0 <a href="https://github.com/MrX456/Cars_Performance_Charts/raw/main/_Deploy/sigeat_1.0.0.rar">aqui</a></p>
 
 
 
