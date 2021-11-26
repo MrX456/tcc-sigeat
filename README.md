@@ -8,6 +8,7 @@
 <ul>
   <p> <a href="https://github.com/MrX456/tcc-sigeat/blob/master/README.md#sobre">Sobre o SIGEAT.</a> </p>
   <p> <a href="https://github.com/MrX456/tcc-sigeat/blob/master/README.md#documentação">Documentação do SIGEAT.</a> </p>
+  <p> <a href="https://github.com/MrX456/tcc-sigeat/blob/master/README.md#requisitos">Requisitos do SIGEAT.</a> </p>
   <p> <a href="https://github.com/MrX456/tcc-sigeat/blob/master/README.md#downloads">Downloads.</a> </p>
   <p> <a href="https://github.com/MrX456/tcc-sigeat/blob/master/README.md#instalação">Instalação do SIGEAT.</a> </p>
 </ul>
@@ -31,6 +32,7 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
 <h2>Documentação</h2>
 
 <p>Documentação <a href="https://github.com/MrX456/tcc-sigeat/tree/main/_Documenta%C3%A7%C3%A3o">aqui</a></p>
+<p>Artigo <a href="#">aqui</a></p>
 
 <h2>Requisitos</h2>
 <img src="/_Documentação/requisitos_img.png">
@@ -62,7 +64,7 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
   
 </p>
 
-<p align="center">::</p>
+<p align="center">SIGEAT - 2021</p>
 
 
 
