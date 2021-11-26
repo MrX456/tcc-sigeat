@@ -41,7 +41,15 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
  Instale o servidor MySql 5. 5 caso não tenha instalado.
  
  Instale o MySql Workbench caso não tenha instalado. Se houver problemas com dll utilize os arquivos da pasta “_redist”. Abra o Workbench e configure a conexão clicando no botão “+”, defina um nome para a conexão, depois teste a conexão e se estiver tudo correto aperte “OK” para finalizar.
+  
+ Abra o MySql Workbench clique sobre a conexão que foi configurada e importe o banco de dados do SIGEAT para seu servidor de banco de dados. Para isso no menu clique no item “Server” e depois no sub-item “Data Import”.
+  
+ Selecione a opção “Import from Self-Contained File” e clique no botão “...” para procurar o arquivo.
 
+ Selecione o arquivo “Sigeat.sql” e clique em “Abrir”, para finalizar  clique no botão “Start Import” para importar o banco de dados.
+  
+ Instale o SIGEAT, através do arquivo “sigeat_installer_1.0.0.exe”.
+  
 </p>
 
 <p align="center">::</p>
