@@ -20,17 +20,20 @@ BRUNO RAFAEL GIMENES, RA 1804160<br>
 GUILHERME RODRIGO DA SILVA, RA 1600376
 
 
-<h2>Documentation</h2>
+<h2>Documentação</h2>
 
-<p>Documentation{path} <a href="https://raw.githack.com/MrX456/Cars_Performance_Charts/main/_Documentation/C%23%20Doc/html/index.html">here</a></p>
+<p>Documentação <a href="https://raw.githack.com/MrX456/Cars_Performance_Charts/main/_Documentation/C%23%20Doc/html/index.html">aqui</a></p>
 
 
 <h2>Deployment</h2>
 
-<p>Download {path} <a href="https://github.com/MrX456/Cars_Performance_Charts/raw/main/_Deployment/cars_perfomance_charts_install.msi">here</a></p>
+<p>Download {path} <a href="https://github.com/MrX456/Cars_Performance_Charts/raw/main/_Deployment/cars_perfomance_charts_install.msi">aqui</a></p>
+
+<h2>Requisitos</h2>
+<p>Lista de requisitos</p>
 
 
-<p align="center">Powered By MrX.</p>
+<p align="center">::</p>
 
 
 
