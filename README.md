@@ -35,7 +35,7 @@ GUILHERME RODRIGO DA SILVA, RA 1600376
 
 <p>Documentação <a href="https://github.com/MrX456/tcc-sigeat/tree/main/_Documenta%C3%A7%C3%A3o">aqui</a></p>
 <p>Artigo <a href="https://github.com/MrX456/tcc-sigeat/tree/main/TCC-Eng.Computacao-Grupo33.v2.1.pdf">aqui</a></p>
-<p>Apresentação <a href="https://youtu.be/aZtrYvxXYQg">aqui</a></p>
+<p>Apresentação <a href="https://youtu.be/aZtrYvxXYQg" target="_blank">aqui</a></p>
 
 <h2>Requisitos</h2>
 <img src="/_Documentação/requisitos_img.png">
